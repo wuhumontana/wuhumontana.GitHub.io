@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://wuhumontana.github.io</id>
+    <title>Kyle&apos;s Blog</title>
+    <updated>2022-11-05T03:05:07.709Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://wuhumontana.github.io"/>
+    <link rel="self" href="https://wuhumontana.github.io/atom.xml"/>
+    <subtitle>Talk is cheap, show me the code.</subtitle>
+    <logo>https://wuhumontana.github.io/images/avatar.png</logo>
+    <icon>https://wuhumontana.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, Kyle&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[209. Minimum Size Subarray Sum]]></title>
+        <id>https://wuhumontana.github.io/post/209-minimum-size-subarray-sum/</id>
+        <link href="https://wuhumontana.github.io/post/209-minimum-size-subarray-sum/">
+        </link>
+        <updated>2022-11-04T08:50:33.000Z</updated>
+        <content type="html"><![CDATA[<p>Given an array of positive integers <code>nums</code> and a positive integer <code>target</code>, return the <strong>minimal length</strong> of a subarray whose sum is greater than or equal to <code>target</code>. If there is no such subarray, return 0 instead.</p>
+<pre><code class="language-java">class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        int result = Integer.MAX_VALUE;
+        int sum = 0;
+        int left = 0;
+        for(int right=0; right &lt; nums.length; right++){
+            sum += nums[right];
+            while(sum &gt;= target){
+                result = Math.min(result, right - left + 1);
+                sum -= nums[left++];
+            }
+        }
+        return result == Integer.MAX_VALUE ? 0 : result; 
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[977. Squares of  Sorted Array]]></title>
+        <id>https://wuhumontana.github.io/post/977-squares-of-sorted-array/</id>
+        <link href="https://wuhumontana.github.io/post/977-squares-of-sorted-array/">
+        </link>
+        <updated>2022-11-04T08:10:12.000Z</updated>
+        <content type="html"><![CDATA[<p>Given an integer array <code>nums</code> sorted in <strong>non-decreasing</strong> order, return an array of <strong>the squares of each number</strong> sorted in non-decreasing order.</p>
+<pre><code class="language-java">        int[] result = new int[nums.length];
+        int left = 0;
+        int right = nums.length - 1;
+        int index = nums.length - 1;
+        while(left &lt;= right){
+            if(nums[left]*nums[left] &gt;= nums[right]*nums[right]){
+                result[index--] = nums[left]*nums[left];
+                left++;
+            }
+            else{   // must us else, otherwise will occur index out of bounds 
+                result[index--] = nums[right]*nums[right];
+                right--;
+            }
+        }
+        return result;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[34. Find First and Last Position  of Element in Sorted Array]]></title>
+        <id>https://wuhumontana.github.io/post/34-find-first-and-last-position-of-element-in-sorted-array/</id>
+        <link href="https://wuhumontana.github.io/post/34-find-first-and-last-position-of-element-in-sorted-array/">
+        </link>
+        <updated>2022-11-03T20:02:27.000Z</updated>
+        <content type="html"><![CDATA[<p>Given an array of integers <code>nums</code> sorted in non-decreasing order, find the starting and ending position of a given <code>target</code> value.</p>
+<p>If <code>target</code> is not found in the array, return [-1, -1].</p>
+<p>You must write an algorithm with <code>O(log n)</code> runtime complexity.</p>
+<pre><code class="language-java">class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int rightBorder = getRightBorder(nums, target);
+        int leftBorder = getLeftBorder(nums, target);
+        if (rightBorder == -2 || leftBorder == -2)
+            return new int[]{-1,-1};
+        if (rightBorder - leftBorder &gt; 1)
+            return new int[]{leftBorder + 1, rightBorder - 1};
+        return new int[]{-1, -1};
+    }
+
+    int getLeftBorder(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        int leftBorder = -2;
+        while(left &lt;= right) {
+            int middle = (left + right) &gt;&gt; 1;
+            if (nums[middle] &gt;= target) {
+                right = middle - 1;
+                leftBorder = right;
+            } else {
+                left = middle + 1;
+            }            
+        }
+        return leftBorder;
+    }
+    
+    int getRightBorder(int[] nums, int target) {
+        int left = 0, right = nums.length-1;
+        int rightBorder = -2;
+        while(left &lt;= right) {
+            int middle = (left + right) &gt;&gt; 1;
+            if (nums[middle] &gt; target) {
+                right = middle -1;
+            } else {
+                left = middle + 1;
+                rightBorder = left;
+            }            
+        }
+        return rightBorder;
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[27. Remove Element]]></title>
+        <id>https://wuhumontana.github.io/post/27-remove-element/</id>
+        <link href="https://wuhumontana.github.io/post/27-remove-element/">
+        </link>
+        <updated>2022-11-01T18:18:33.000Z</updated>
+        <content type="html"><![CDATA[<p>Given an integer array <code>nums</code> and an integer <code>val</code>, remove all occurrences of <code>val</code> in <code>nums</code> <strong>in-place</strong>. The relative order of the elements may be changed. Return the length of new array.</p>
+<pre><code class="language-java">class Solution {
+    public int removeElement(int[] nums, int val) {
+        int slow = 0;
+        for(int fast = 0; fast &lt; nums.length; fast++){
+            if(nums[fast] != val)
+                nums[slow++] = nums[fast];
+        }
+        return slow;
+    }
+}
+</code></pre>
+<p>Gist:</p>
+<ul>
+<li><code>fast point</code>: find new elements that didn't equal  the target <code>val</code>.</li>
+<li><code>slow point</code>: store new elememts of the array.</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[35. Search Insert Position]]></title>
+        <id>https://wuhumontana.github.io/post/35-search-insert-position/</id>
+        <link href="https://wuhumontana.github.io/post/35-search-insert-position/">
+        </link>
+        <updated>2022-10-21T20:16:27.000Z</updated>
+        <content type="html"><![CDATA[<p>Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You must write an algorithm with <code>O(log n)</code> runtime complexity.</p>
+<pre><code class="language-java">class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while(left &lt;= right) {
+            int middle = (left + right) &gt;&gt; 1;
+            if(nums[middle] == target){
+                return middle;
+            }
+            else if(nums[middle] &lt; target){
+                left = middle + 1;
+            }
+            else if(nums[middle] &gt; target){
+                right = middle - 1;
+            }
+        }
+        return right + 1;
+        // Handle the following four situations separately
+        // 1、target value comes before all elements of the array: [0, -1]
+        // 2、target value is equal to an element in the array:  return middle
+        // 3、target value is inserted into the array： [left, right]，return  right + 1
+        // 4、target value is behind all elemetns：[left, right]：return right + 1;
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[704.Binary Search]]></title>
+        <id>https://wuhumontana.github.io/post/704binary-search/</id>
+        <link href="https://wuhumontana.github.io/post/704binary-search/">
+        </link>
+        <updated>2022-10-21T06:45:20.000Z</updated>
+        <content type="html"><![CDATA[<p>Given an array of integers <code>nums</code> which is sorted in ascending order, and an integer <code>target</code>, write a function to search <code>target</code> in <code>nums</code>. If <code>target</code> exists, then return its index. Otherwise, return <code>-1</code>.</p>
+<p>You must write an algorithm with <code>O(log n)</code> runtime complexity.</p>
+<pre><code class="language-java">class Solution {
+    public int search(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while(left &lt;= right) {
+            int middle = (left+right) &gt;&gt; 1;
+            if(nums[middle] == target)  
+                return middle;
+            else if(nums[middle] &gt; target) 
+                right = middle - 1;    
+            else if(nums[middle] &lt; target) 
+                left = middle + 1;
+        }
+        return -1;
+    }
+}
+</code></pre>
+<p>Conditions using binary search:</p>
+<ul>
+<li>
+<p>All the integers in <code>nums</code> are unique.</p>
+</li>
+<li>
+<p><code>nums</code> is sorted in ascending order.</p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CV]]></title>
+        <id>https://wuhumontana.github.io/post/resume/</id>
+        <link href="https://wuhumontana.github.io/post/resume/">
+        </link>
+        <updated>2022-10-17T13:42:51.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="kaikyle-wang">Kai(Kyle) Wang</h2>
+<p>(667) 464-9002<br>
+3333 N Charles St. #304, Baltimore, MD 21218<br>
+<a href="kwang112@jhu.edu">kwang112@jhu.edu</a><br>
+<a href="https://wuhumontana.github.io">https://wuhumontana.github.io</a></p>
+<h2 id="education">EDUCATION</h2>
+<p><strong>Johns Hopkins University</strong><br>
+Master of Science in Security Informatics	<br>
+Baltimore, MD<br>
+Sept. 2022—Present</p>
+<p><strong>Hunan University of Technology</strong><br>
+Bachelor of Engineering in Software Engineering	<br>
+Zhuzhou, Hunan<br>
+Sept. 2013—Jun. 2017</p>
+<h2 id="experience">EXPERIENCE</h2>
+<p><strong>Yum China</strong>	<br>
+Senior Engineer<br>
+Nanjing, Jiangsu<br>
+Jun. 2021—Present</p>
+<ul>
+<li>Led the back-end architecture design and development of the data map module and multi-tenant module of the data security platform</li>
+<li>Provided protection for the data security of more than 400 million users of brands such as KFC, Pizza Hut, and Taco Bell</li>
+</ul>
+<p><strong>Meixin Logistics</strong><br>
+Java Engineer											<br>
+Nanjing, Jiangsu<br>
+Jan. 2020—Jun. 2021</p>
+<ul>
+<li>Led a one-year project the back-end architecture design and core module development of the bulk commodity supply chain management platform</li>
+</ul>
+<p><strong>Chery Finance</strong><br>
+Software Engineer												<br>
+Wuhu, Anhui<br>
+May 2017—Jan. 2020</p>
+<ul>
+<li>Led project management, including document countersigning, demand communication, progress tracking, process control, work reporting, project acceptance, etc</li>
+</ul>
+<h2 id="projects">PROJECTS</h2>
+<p><strong>Data Security Platform</strong><br>
+Jun. 2021—Present</p>
+<ul>
+<li>Achieved dynamic monitoring of the distribution, circulation path, and flow trend of billions data</li>
+<li>Achieved risk early warning, compliance monitoring, and standardized management during the use of more than 5000 databases</li>
+<li>Developed the functions of data map module and multi-tenant module, such as sensitive data management, data flow trend graph, data permission configuration, desensitization task initiation</li>
+</ul>
+<p><strong>Auto Finance Credit Business Platform</strong></p>
+<p>Nov. 2018—Jan. 2020</p>
+<ul>
+<li>Investigated the architecture and operating status of the old platform with the consulting company(EMC), and report the evaluation results to the management</li>
+<li>Investigated the technical advantages and project implementation experiences of suppliers</li>
+<li>Developed a credit approval microservice based on Spring Cloud to realize automatic and manual review, and achieved automatic deployment on the Kubernetes</li>
+</ul>
+<p><strong>Bulk Commodity Supply Chain Management Platform</strong><br>
+Jan. 2020—Jun. 2021</p>
+<ul>
+<li>Led the back-end architecture and database design of this one-year project, and implemented CD/CI through GitLab Runner</li>
+<li>Developed the core modules, such as logistics orders, waybills, payment, and settlement modules</li>
+</ul>
+<p><strong>Post-loan Self Service Platform</strong><br>
+Jun. 2018—Nov. 2018</p>
+<ul>
+<li>Implemented Java multi-threading technology to optimize the WeChat message push function, increased the push speed to nearly 500,000 messages per minute</li>
+<li>Developed functions such as early repayment and mailing of vehicle registration certificates. It is expected to save telephone costs and labor costs 178,100 yuan per year</li>
+</ul>
+<p><strong>WeChat Electronic Authorization Mini Program</strong><br>
+Jan. 2018—Jun. 2018</p>
+<ul>
+<li>Led project management, demand analysis, face recognition interface docking, SSL certificate application, and deployment, etc</li>
+<li>Increased the automatic approval rate from 8% to 25%, and reduced the approval rejection rate from 16.62% to 0</li>
+</ul>
+<p><strong>Risk Decision Engine</strong><br>
+Oct. 2017—Jan. 2018</p>
+<ul>
+<li>Completed the configuration of credit product rules, automatic approval rules, and joint loan rules, and realized dynamic verification of business rules and processes</li>
+<li>Reduced the development workload caused by changes in business rules after training colleagues in the business department on how to configure decision rules</li>
+</ul>
+<p><strong>RFID Vehicle Inventory System</strong><br>
+Jul. 2017—Oct. 2017</p>
+<ul>
+<li>Developed the vehicle identification numberinventory and vehicle certificate inventory modules.</li>
+<li>Completed the containerized deployment and automatic compilation of the system, saving the company 4 physical machine resources</li>
+</ul>
+<p><strong>Multi-language Dynamic Compilation Service</strong></p>
+<p>May. 2017—Jul. 2017</p>
+<ul>
+<li>Developed a web service that can compile files uploaded by users (such as .java files or .go files), and the server returns the compiled files and auxiliary information after compilation</li>
+<li>The user can specify the compiled version of the language (such as Java1.7, 1.8...). Supports dynamic expansion for different languages and versions</li>
+</ul>
+<h2 id="addition">ADDITION</h2>
+<ul>
+<li>
+<p>Societies:<br>
+computer academy laboratory, basketball referee club, employee union of Yum China</p>
+</li>
+<li>
+<p>Awards:<br>
+Recognition &amp; Encouragement Award of Yum China, Annual Innovation and Efficiency Prize of Chery finance, Excellent Referee Prize of the college basketball league</p>
+</li>
+<li>
+<p>Hobbies:<br>
+basketball, motorcycle</p>
+</li>
+</ul>
+<h2 id="skills">SKILLS</h2>
+<ul>
+<li>
+<p>Application Softwares:<br>
+Docker, Kubernetes, Git, Maven, Jenkins, Nginx</p>
+</li>
+<li>
+<p>Frameworks:<br>
+SpringCloud, Mybatis,Hibernate, Bootstrap, Vue, Echart</p>
+</li>
+<li>
+<p>Programming Languages:<br>
+Java, C/C++, Python, JavaScript, HTML, CSS, Shell</p>
+</li>
+<li>
+<p>Languages:<br>
+Chinese(Native Speaker), English (Toefl 109)</p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://wuhumontana.github.io/post/hello-gridea/</id>
+        <link href="https://wuhumontana.github.io/post/hello-gridea/">
+        </link>
+        <updated>2018-12-11T03:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<!-- more -->
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="https://fehey.com/">示例网站</a></p>
+<h2 id="特性">特性👇</h2>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+</feed>

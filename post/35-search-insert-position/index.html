@@ -1,0 +1,204 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>35. Search Insert Position | Kyle&#39;s Blog</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1667617502497">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="35. Search Insert Position | Kyle&#39;s Blog - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return th..." />
+    <meta name="keywords" content="LeetCode,Array" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1667617502497" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle&#39;s Blog
+  </h1>
+  <p class="site-description">
+    Talk is cheap, show me the code.
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1ePvUSAOfQgsYtt6EZj49MPhaiIwxoM7i/view?usp=sharing" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              35. Search Insert Position
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-10-21
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://wuhumontana.github.io/tag/FabkVlWLr/" class="post-tag">
+                  # LeetCode
+                </a>
+              
+                <a href="https://wuhumontana.github.io/tag/b6FT1SK2a/" class="post-tag">
+                  # Array
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You must write an algorithm with <code>O(log n)</code> runtime complexity.</p>
+<pre><code class="language-java">class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while(left &lt;= right) {
+            int middle = (left + right) &gt;&gt; 1;
+            if(nums[middle] == target){
+                return middle;
+            }
+            else if(nums[middle] &lt; target){
+                left = middle + 1;
+            }
+            else if(nums[middle] &gt; target){
+                right = middle - 1;
+            }
+        }
+        return right + 1;
+        // Handle the following four situations separately
+        // 1、target value comes before all elements of the array: [0, -1]
+        // 2、target value is equal to an element in the array:  return middle
+        // 3、target value is inserted into the array： [left, right]，return  right + 1
+        // 4、target value is behind all elemetns：[left, right]：return right + 1;
+    }
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/704binary-search/">
+              <h3 class="post-title">
+                704.Binary Search
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
