@@ -1,0 +1,330 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 42 | 0-1 Backpack Basic Theory（一）| 0-1 Backpack Basic Theory（二）|416. Partition Equal Subset Sum | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 42 | 0-1 Backpack Basic Theory（一）| 0-1 Backpack Basic Theory（二）|416. Partition Equal Subset Sum | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in..." />
+    <meta name="keywords" content="LeetCode" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 42 | 0-1 Backpack Basic Theory（一）| 0-1 Backpack Basic Theory（二）|416. Partition Equal Subset Sum
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-08-16
+              </span>
+              <span>
+                9 min read
+              </span>
+              
+                <a href="https://wuhumontana.github.io/tag/FabkVlWLr/" class="post-tag">
+                  # LeetCode
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-42-or-0-1-backpack-basic-theoryyi-or-0-1-backpack-basic-theoryer-or416-partition-equal-subset-sum.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><a href="https://blog.csdn.net/kyle313606922/article/details/128260518">Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128272450">Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128281122">Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128295618">Day 4 | 24. Swap Nodes in Pairs| 19. Remove Nth Node From End of List| 160.Intersection of Two Lists</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128310593">Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128324032">Day 7 | 454. 4Sum II | 383. Ransom Note | 15. 3Sum | 18. 4Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128325957">Day 8 | 344. Reverse String | 541. Reverse String II | 替换空格 | 151.Reverse Words in a String | 左旋转字符串</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128337737">Day 9 | 28. Find the Index of the First Occurrence in a String | 459. Repeated Substring Pattern</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128358488">Day 10 | 232. Implement Queue using Stacks | 225. Implement Stack using Queue</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128359564">Day 11 | 20. Valid Parentheses | 1047. Remove All Adjacent Duplicates In String | 150. Evaluate RPN</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128382265">Day 13 | 239. Sliding Window Maximum | 347. Top K Frequent Elements</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128392214">Day 14 | 144.Binary Tree Preorder Traversal | 94.Binary Tree Inorder Traversal| 145.Binary Tree Postorder Traversal</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128405092">Day 15 | 102. Binary Tree Level Order Traversal | 226. Invert Binary Tree | 101. Symmetric Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128415322">Day 16 | 104.MaximumDepth of BinaryTree| 111.MinimumDepth of BinaryTree| 222.CountComplete TreeNodes</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128415322">Day 17 | 110. Balanced Binary Tree | 257. Binary Tree Paths | 404. Sum of Left Leaves</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128451752">Day 18 | 513. Find Bottom Left Tree Value | 112. Path Sum | 105&amp;106. Construct Binary Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128466708">Day 20 | 654. Maximum Binary Tree | 617. Merge Two Binary Trees | 700.Search in a Binary Search Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128477578">Day 21 | 530. Minimum Absolute Difference in BST | 501. Find Mode in Binary Search Tree | 236. Lowes</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128490148">Day 22 | 235. Lowest Common Ancestor of a BST | 701. Insert into a BST | 450. Delete Node in a BST</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128542480">Day 23 | 669. Trim a BST | 108. Convert Sorted Array to BST | 538. Convert BST to Greater Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128572676">Day 24 | 77. Combinations</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128588207">Day 25 | 216. Combination Sum III | 17. Letter Combinations of a Phone Number</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128597793">Day 27 | 39. Combination Sum | 40. Combination Sum II | 131. Palindrome Partitioning</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128608537">Day 28 | 93. Restore IP Addresses | 78. Subsets | 90. Subsets II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128623556">Day 29 | 491. Non-decreasing Subsequences | 46. Permutations | 47. Permutations II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128638800">Day 30 | 332. Reconstruct Itinerary | 51. N-Queens | 37. Sudoku Solver</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128691410">Day 31 | 455. Assign Cookies | 376. Wiggle Subsequence | 53. Maximum Subarray</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128692538">Day 32 | 122. Best Time to Buy and Sell Stock II | 55. Jump Game | 45. Jump Game II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128702162">Day 34 | 1005. Maximize Sum Of Array After K Negations | 134. Gas Station | 135. Candy</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128710612">Day 35 | 860. Lemonade Change | 406. Queue Reconstruction by Height | 452. Minimum Number of Arrows</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128722599">Day 36 | 435. Non-overlapping Intervals | 763. Partition Labels | 56. Merge Intervals</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128733183">Day 37 | 738. Monotone Increasing Digits | 714. Best Time to Buy and Sell Stock | 968. BT Camera</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128740765">Day 38 | 509. Fibonacci Number | 70. Climbing Stairs | 746. Min Cost Climbing Stairs</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128745450">Day 39 | 62. Unique Paths | 63. Unique Paths II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128798243">Day 41 | 343. Integer Break | 96. Unique Binary Search Trees</a></p>
+<p><ul class="markdownIt-TOC">
+<li><a href="#0-1-backpack-basic-theory%E4%B8%80">0-1 Backpack Basic Theory（一）</a></li>
+<li><a href="#0-1-backpack-basic-theory%E4%BA%8C">0-1 Backpack Basic Theory（二）</a></li>
+<li><a href="#416-partition-equal-subset-sum">416. Partition Equal Subset Sum</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="0-1-backpack-basic-theory一">0-1 Backpack Basic Theory（一）</h1>
+<ul>
+<li>
+<p>Determine the meaning of <code>dp[i][j]</code></p>
+<ul>
+<li><code>dp[i][j]</code> is the maximum value of items that are taken from subscript <code>0</code> to <code>i</code> and put into the backpack with capacity <code>j</code></li>
+</ul>
+</li>
+<li>
+<p>Determine the recursive formula</p>
+<ul>
+<li><strong>Doesn't contain item i</strong>: <code>dp[i][j]</code> is <code>dp[i-1][j]</code>. The item <code>i</code> can't be put into the backpack when the weight of item <code>i</code> is greater than the backpack <code>j</code> weight. So the value of items in the backpack remains the same as before.</li>
+<li><strong>Contain item i</strong>: <code>dp[i - 1][j - weight[i]]</code> is the maximum value when the capacity of backpack is <code>j - weight[i]</code> and doesn't contain the item <code>i</code>. <code>value[i]</code> is the value of item <code>i</code>. So <code>dp[i-1][j-weight[i]] + value[i]</code> is the maximum value when containing the item <code>i</code>.</li>
+<li>So the <strong>recursive formula</strong> is: <code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i])</code>;</li>
+</ul>
+</li>
+<li>
+<p>Initialize the dynamic programming array</p>
+<ul>
+<li>If the capacity of backpack is <code>0</code>, like <code>dp[i][0]</code>. No matter which items are selected, the total value must be <code>0</code>.<br>
+<img src="https://img-blog.csdnimg.cn/img_convert/796b1bb9dd03e442c07b83905b4e3bcf.png#pic_center" alt="在这里插入图片描述" loading="lazy"></li>
+<li>When <code>j &lt; weight[0]</code>, <code>dp[0][j]</code> should be <code>0</code>.</li>
+<li>When <code>j &gt;= weight[0]</code>, <code>dp[0][j]</code> should be <code>value[0]</code><br>
+<img src="https://img-blog.csdnimg.cn/img_convert/b0eff5e89fad88f7c89507ebfe35e17b.png#pic_center" alt="在这里插入图片描述" loading="lazy"></li>
+<li>According to the recursive formula, <code>dp[i][j]</code> is derived from the upper left value. So the other subscripts can be initialized to whatever values, because they will be overwritten. It's more convenient to initialize the dynamic programming array to <code>0</code>.</li>
+</ul>
+</li>
+<li>
+<p>Traversal order</p>
+<ul>
+<li>Actually, <code>traversing item first</code> and <code>traversing backpack capacity first</code> all work. The <code>traversing item first</code> is better understood.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">// The size of the weight array is the number of items
+for(int i = 1; i &lt; weight.size(); i++) { // Traverse items
+    for(int j = 0; j &lt;= bagweight; j++) { // Traverse backpack capacity
+        if (j &lt; weight[i]) dp[i][j] = dp[i - 1][j];
+        else dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);
+    }
+</code></pre>
+<h1 id="0-1-backpack-basic-theory二">0-1 Backpack Basic Theory（二）</h1>
+<ul>
+<li>
+<p>Determine the meaning of <code>dp[j]</code></p>
+<ul>
+<li><code>dp[j]</code> is the maximum value of items carried in the backpack with capacity <code>j</code></li>
+</ul>
+</li>
+<li>
+<p>Determine the recursive formula</p>
+<ul>
+<li><strong>Doesn't contain item i</strong>: <code>dp[j]</code> is <code>dp[i-1][j]</code>. The item <code>i</code> can't be put into the backpack when the weight of item <code>i</code> is greater than the backpack <code>j</code> weight. So the value of items in the backpack remains the same as before.</li>
+<li><strong>Contain item i</strong>: <code>dp[j - weight[i]]</code> denotes the maximum value of items carried by a backpack with capacity <code>j - weight[i]</code> and doesn't contain the item <code>i</code>. <code>value[i]</code> is the value of item <code>i</code>. So <code>dp[j-weight[i]] + value[i]</code> is the maximum value when containing the item <code>i</code>.</li>
+<li>So the <strong>recursive formula</strong> is: <code>dp[j] = max(dp[j], dp[j - weight[i]] + value[i])</code>;</li>
+</ul>
+</li>
+<li>
+<p>Initialize the dynamic programming array</p>
+<ul>
+<li>If the capacity of backpack is <code>0</code>, like <code>dp[0]</code>. No matter which items are selected, the total value must be <code>0</code>.</li>
+<li>The dynamic programming array must be derived by taking the number with the largest value. We can initialize the array to <code>0</code>. In this way, the dp array will get the maximum value when doing the recursion instead of being overwritten by initial value.</li>
+</ul>
+</li>
+<li>
+<p>Traversal order</p>
+<ul>
+<li>The order of traversing the backpack is different. For <code>2D</code> dp traversal, the backpack capacity is <code>from small to large</code>, while for <code>1D</code> dp traversal, the backpack is <code>from large to small</code>. The reverse order traversal is to ensure that  item <code>i</code> is only put in once, cause the positive order traversal will lead to item <code>0</code> be repeatedly added multiple times.</li>
+<li><strong>Why don't we use reverse order for the two-dimensional dp array?</strong> Because for two-dimensional dp, <code>dp[i][j]</code> are computed through the previous layer<code>dp[i-1][j]</code>. So the <code>dp[i][j]</code> of this layer won't be overwritten.</li>
+<li>For the order of the two nested <code>for</code> loops. We must adopt <code>traversing item first</code> instead of <code>traversing backpack capacity first</code>. Because if we adopt <code>traversing backpack capacity first</code>, then only one item will be put in each <code>dp[j]</code>(backpack).</li>
+<li>The one-dimensional array traversal is still essentially a traversal of a two-dimensional array. The value in the lower right corner depends on the value in the upper left corner of the previous layer. So we need to ensure the left value is still from the previous layer, overwritten from right to the left.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">for(int i = 0; i &lt; weight.size(); i++) { 			// Traversing items
+    for(int j = bagWeight; j &gt;= weight[i]; j--) { // Traversing backpack capacity
+        dp[j] = max(dp[j], dp[j - weight[i]] + value[i]);
+    }
+}
+</code></pre>
+<h1 id="416-partition-equal-subset-sum">416. Partition Equal Subset Sum</h1>
+<p><a href="https://leetcode.com/problems/partition-equal-subset-sum/description/">link</a></p>
+<pre><code class="language-java">class Solution {
+    public boolean canPartition(int[] nums) {
+        if(nums==null || nums.length==0) return false;
+        int sum = 0;
+        for(int num : nums)
+            sum += num;
+        // if sum is odd number, two subsets can not be equal
+        if(sum%2 != 0) return false;
+        int target = sum / 2;
+        int[] dp = new int[target + 1];
+        for(int i = 0; i &lt; nums.length; i++){       // Traversing items
+            for(int j = target; j &gt;= nums[i]; j--)  // Traversing capacity
+                dp[j] = Math.max(dp[j], dp[j-nums[i]] + nums[i]);
+        }
+        return dp[target] == target;
+    }
+}
+</code></pre>
+<ul>
+<li>The weight and value of item <code>i</code> both are <code>nums[i]</code></li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#0-1-backpack-basic-theory%E4%B8%80">0-1 Backpack Basic Theory（一）</a></li>
+<li><a href="#0-1-backpack-basic-theory%E4%BA%8C">0-1 Backpack Basic Theory（二）</a></li>
+<li><a href="#416-partition-equal-subset-sum">416. Partition Equal Subset Sum</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/homework-2-security-analytics-decision-tree/">
+              <h3 class="post-title">
+                Homework 2 - Security Analytics - Decision Tree
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

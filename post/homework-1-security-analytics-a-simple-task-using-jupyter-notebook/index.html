@@ -1,0 +1,256 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Homework 1 - Security Analytics - A simple task using Jupyter Notebook | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Homework 1 - Security Analytics - A simple task using Jupyter Notebook | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="1. Install Python and Numpy, Pandas, sklearn, matplotlib, seaborn.
+2. Download credit card fraud data from https://www.k..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Homework 1 - Security Analytics - A simple task using Jupyter Notebook
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-03-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://miro.medium.com/v2/resize:fit:1400/1*Ef7iAF-OnGg3YaQ8-EkMgQ.jpeg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><strong>1. Install Python and Numpy, Pandas, sklearn, matplotlib, seaborn.</strong></p>
+<p><strong>2. Download credit card fraud data from https://www.kaggle.com/mlg-ulb/creditcardfraudLinks to an external site.</strong></p>
+<p><strong>3. import data &amp; check the shape of the dataset (how many rows, how many columns) &amp; check information. (The last column is class. class = 1 means fraud.) Check how many frauds and how many normal transactions.</strong></p>
+<p><strong>4. Explore some plot functions. visualize feature data in terms of fraud vs. normal data. Randomly pick 2 or 3 features. plot fraud data in red and normal data in green.</strong></p>
+<p><a href="https://drive.google.com/file/d/1dHKJpxRESLn4cc8EHJvcrJ2Kxz8GKsEK/view?usp=share_link">creditcard.csv</a><br>
+<a href="https://drive.google.com/file/d/1PsFOGyaf4L1hVqql7K0rLYNiUHdGWXWx/view?usp=share_link">hw1_Kyle Wang.ipynb</a></p>
+<pre><code class="language-python">import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import matplotlib as mpl
+import sklearn as skl
+
+
+cards = pd.read_csv(&quot;creditcard.csv&quot;)
+Class = cards[&quot;Class&quot;]
+Class_0 = Class.index[Class==0]
+Class_1 = Class.index[Class==1]
+
+row_num = cards.shape[0]
+print(&quot;row number: &quot;, row_num)
+
+column_num = cards.shape[1]
+print(&quot;column number: &quot;, column_num)
+
+normal_num = Class_0.size;
+print(&quot;normal number: &quot;, normal_num)
+
+fraud_num = Class_1.size;
+print(&quot;fraud number: &quot;, fraud_num)
+</code></pre>
+<p>row number:  284807<br>
+column number:  31<br>
+normal number:  284315<br>
+fraud number:  492</p>
+<pre><code class="language-python">colors = ['green', 'red']
+sns.countplot(x=cards[&quot;Class&quot;], palette=colors)
+plt.title('Class Distribution \n (0: No Fraud || 1: Fraud)', fontsize=14);
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/b0005148fbce4a63bfb2cd0dca8a7a01.png" alt="" loading="lazy"></figure>
+<pre><code class="language-python">cm=mpl.colors.ListedColormap(['g','r'])
+plt.title('Distribution of Class over V7 and V12') # title
+plt.xlabel('V7')             # abscissa name
+plt.ylabel('V12')            # ordinate name
+plt.scatter(cards[&quot;V7&quot;],cards[&quot;V12&quot;], c = cards[&quot;Class&quot;], cmap=cm, s=2, alpha=0.8, marker='x')
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://img-blog.csdnimg.cn/bb4215d6ff004169a4c7c1d4b4b694b3.png#pic_center" alt="在这里插入图片描述" loading="lazy"></figure>
+<pre><code class="language-python">cm=mpl.colors.ListedColormap(['g','r'])
+plt.title('Distribution of Class over V10 and V11') # title
+plt.xlabel('V10')             # abscissa name
+plt.ylabel('V11')           # ordinate name
+plt.scatter(cards[&quot;V10&quot;],cards[&quot;V11&quot;], c = cards[&quot;Class&quot;], cmap=cm, s=1, alpha=0.8)
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://img-blog.csdnimg.cn/b4fc499983154fe2ac48a10e675431d5.png#pic_center" alt="在这里插入图片描述" loading="lazy"></figure>
+<pre><code class="language-python">Amount_0 = cards.iloc[Class_0, 29] # get Amount list that Class=0
+
+plt.ylim(0, 60000)  
+plt.xlim(0, 200)
+plt.title('Frequency Histogram that Class=0') # title
+plt.xlabel('Amount')             # abscissa name
+plt.ylabel('Number of normal')   # ordinate name
+plt.hist(Amount_0, bins=8000, density=False, color = 'green', edgecolor='black') # draw Frequency Histogram that Class=0
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://img-blog.csdnimg.cn/6ef2066b4db140c58223c71cd84fc02b.png#pic_center" alt="在这里插入图片描述" loading="lazy"></figure>
+<pre><code class="language-python">Amount_1 = cards.iloc[Class_1, 29] # get Amount list that Class=1
+
+plt.ylim(0, 300)     
+plt.xlim(0, 1000)
+plt.title('Frequency Histogram that Class=1') # title
+plt.xlabel('Amount')             # abscissa name
+plt.ylabel('Number of fraud')    # ordinate name
+plt.hist(Amount_1, bins=100, density=False, color = 'red', edgecolor='black') # draw Frequency Histogram that Class=1
+plt.show()
+</code></pre>
+<figure data-type="image" tabindex="5"><img src="https://img-blog.csdnimg.cn/b1e20742d60545a78cba2696d7eee440.png#pic_center" alt="在这里插入图片描述" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/exploit-log4j-vulnerability/">
+              <h3 class="post-title">
+                Exploit Log4j Vulnerability 
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,297 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 11 | 20. Valid Parentheses | 1047. Remove All Adjacent Duplicates In String | 150. Evaluate RPN | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 11 | 20. Valid Parentheses | 1047. Remove All Adjacent Duplicates In String | 150. Evaluate RPN | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 11 | 20. Valid Parentheses | 1047. Remove All Adjacent Duplicates In String | 150. Evaluate RPN
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-02-27
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-11-or-20-valid-parentheses-or-1047-remove-all-adjacent-duplicates-in-string-or-150-evaluate-rpn.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><a href="https://blog.csdn.net/kyle313606922/article/details/128260518">Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128272450">Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128281122">Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128295618">Day 4 | 24. Swap Nodes in Pairs| 19. Remove Nth Node From End of List| 160.Intersection of Two Lists</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128310593">Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128324032">Day 7 | 454. 4Sum II | 383. Ransom Note | 15. 3Sum | 18. 4Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128325957">Day 8 | 344. Reverse String | 541. Reverse String II | 替换空格 | 151.Reverse Words in a String | 左旋转字符串</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128337737">Day 9 | 28. Find the Index of the First Occurrence in a String | 459. Repeated Substring Pattern</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128358488">Day 10 | 232. Implement Queue using Stacks | 225. Implement Stack using Queue</a></p>
+<p><ul class="markdownIt-TOC">
+<li><a href="#leetcode-20-valid-parentheses">LeetCode 20. Valid Parentheses</a></li>
+<li><a href="#leetcode-1047-remove-all-adjacent-duplicates-in-string">LeetCode 1047. Remove All Adjacent Duplicates In String</a></li>
+<li><a href="#leetcode-150-evaluate-reverse-polish-notation">LeetCode 150. Evaluate Reverse Polish Notation</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="leetcode-20-valid-parentheses">LeetCode 20. Valid Parentheses</h1>
+<p><a href="https://leetcode.com/problems/valid-parentheses/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public boolean isValid(String s) {
+        // if the length of s is an odd number, s must be invalid
+        if(s.length()%2 != 0) return false;
+
+        Stack&lt;Character&gt; stack   = new Stack&lt;&gt;();
+        for(int i = 0; i &lt; s.length(); i++){
+            char ch = s.charAt(i);
+            if(ch == '(' )
+                stack.push(')');
+            else if(ch == '[')
+                stack.push(']');
+            else if(ch == '{')
+                stack.push('}');
+            // First check if the stack is empty, then judge whether the top element is equal to the current letter
+            // Situation 3 and 2
+            else if(stack.isEmpty() || stack.peek() != ch)
+                return false;
+            else
+                stack.pop();    
+        }
+        //Int 1 situation, the stack is not empty
+        return stack.isEmpty();
+    }
+}
+</code></pre>
+<p><strong>Thought:</strong></p>
+<ul>
+<li>We need to deal with three situations:
+<ul>
+<li>①	<code>( [ { } ] ( )</code></li>
+<li>②	<code>[ { ( ] } ]</code></li>
+<li>③	<code>[ { } ] ( ) ) )</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="leetcode-1047-remove-all-adjacent-duplicates-in-string">LeetCode 1047. Remove All Adjacent Duplicates In String</h1>
+<p><a href="https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public String removeDuplicates(String s) {
+        Stack&lt;Character&gt; stack = new Stack();
+        for(int i = 0; i &lt; s.length(); i++){
+            char ch = s.charAt(i);
+            if(stack.isEmpty() || stack.peek()!=ch)
+                stack.push(ch);
+            else
+                stack.pop();
+        }
+        // The remaining elements in the stack are unrepeated.
+        String str = &quot;&quot;;
+        while(!stack.isEmpty())
+            str = stack.pop() + str;
+        return str.toString();
+    }
+}
+</code></pre>
+<p><strong>Thought:</strong></p>
+<ul>
+<li>Use a <code>stack</code> to save traversed elements. When traversing the current element, check the <code>stack</code> to see whether there is an adjacent duplicated element.</li>
+<li>If exists repeated element, perform elimination operation <code>pop()</code>. Otherwise do <code>push()</code></li>
+<li>The remaining elements in the stack are unrepeated.</li>
+</ul>
+<hr>
+<h1 id="leetcode-150-evaluate-reverse-polish-notation">LeetCode 150. Evaluate Reverse Polish Notation</h1>
+<p><a href="hhttps://leetcode.com/problems/evaluate-reverse-polish-notation/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public int evalRPN(String[] tokens) {
+        Deque&lt;Integer&gt; stack = new LinkedList&lt;&gt;();
+        for(String s : tokens){
+            if(s.equals(&quot;+&quot;))
+                stack.push(stack.pop() + stack.pop());
+            else if(s.equals(&quot;-&quot;))  
+                stack.push(-stack.pop() + stack.pop());
+            else if(s.equals(&quot;*&quot;))
+                stack.push(stack.pop() * stack.pop());
+            else if(s.equals(&quot;/&quot;)){
+                int temp1 = stack.pop();
+                int temp2 = stack.pop();
+                stack.push(temp2/temp1);
+            }
+            else
+                stack.push(Integer.valueOf(s));
+        }
+        return stack.pop();
+    }
+}
+</code></pre>
+<p><strong>Thoughts:</strong></p>
+<ul>
+<li><code>Reverse Polish Notation</code> is a suffix notation. The so-called <code>suffix</code> means the indicator is in the back.</li>
+<li>For example:  This RPE of <code>( 1 + 2 ) * ( 3 + 4 ) </code> is written as <code>( ( 1 2 + ) ( 3 4 + ) * )</code></li>
+<li>Use the stack to operate RPN calculation. If it encounters a number, do <code>push()</code>. If it meets an indicator, get the numbers in the stack to do the calculation. Then push the result to the stack.</li>
+<li>Note: <code>-</code> and <code>/</code> require additional processing.</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#leetcode-20-valid-parentheses">LeetCode 20. Valid Parentheses</a></li>
+<li><a href="#leetcode-1047-remove-all-adjacent-duplicates-in-string">LeetCode 1047. Remove All Adjacent Duplicates In String</a></li>
+<li><a href="#leetcode-150-evaluate-reverse-polish-notation">LeetCode 150. Evaluate Reverse Polish Notation</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/day-10-or-232-implement-queue-using-stacks-or-225-implement-stack-using-queue/">
+              <h3 class="post-title">
+                Day 10 | 232. Implement Queue using Stacks | 225. Implement Stack using Queue
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

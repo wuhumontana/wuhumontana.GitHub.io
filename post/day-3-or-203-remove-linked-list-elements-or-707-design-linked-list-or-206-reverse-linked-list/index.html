@@ -1,0 +1,373 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-02-27
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-3-or-203-remove-linked-list-elements-or-707-design-linked-list-or-206-reverse-linked-list.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><a href="https://blog.csdn.net/kyle313606922/article/details/128260518">Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128272450">Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II</a></p>
+<p><ul class="markdownIt-TOC">
+<li><a href="#basic-concepts-of-linked-list">Basic Concepts of Linked List</a></li>
+<li><a href="#leetcode-203-remove-linked-list-elements">LeetCode 203. Remove Linked List Elements</a></li>
+<li><a href="#leetcode-707-design-linked-list">LeetCode 707. Design Linked List</a></li>
+<li><a href="#leetcode-206-reverse-linked-list">LeetCode 206. Reverse Linked List</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="basic-concepts-of-linked-list">Basic Concepts of Linked List</h1>
+<p>The linked list is a kind of linear structure connected by pointers. Each node is composed of two parts. One is the <code>data field</code>, and the other is the <code>pointer field</code>(storing the pointer to the next node). The pointer field of the last node points to <code>null</code>.<br>
+<img src="https://img-blog.csdnimg.cn/20200806194529815.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br>
+The arrays are contiguously distributed in the memory space, but linked lists are not contiguously distributed in the memory space.</p>
+<p>Like this linked list, the start node is 2, and the last node is 7. Each node distributes in the different address space of memory and is connected by pointers.<br>
+<img src="https://img-blog.csdnimg.cn/20200806194613920.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br>
+<strong>Differences between array and linked list：</strong><br>
+<img src="https://img-blog.csdnimg.cn/20200806195200276.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br>
+The length of the array is <code>fixed</code> when defining. If you want to modify its length, you need to define a new array. Because when you do the insert or delete operation, you have to move every behind element forward or backward.</p>
+<p>The length of the linked list is <code>unfixed</code>. It can do dynamic insert and delete operations. So linked list suits scenes that have few queries and highly frequent insert or delete.</p>
+<h1 id="leetcode-203-remove-linked-list-elements">LeetCode 203. Remove Linked List Elements</h1>
+<p><a href="https://leetcode.com/problems/remove-linked-list-elements/">Question Link</a><br>
+<strong>Solution:</strong></p>
+<pre><code class="language-java">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode dummy = new ListNode(-1, head);
+        ListNode pre = dummy;
+        while(head != null){
+            if(head.val == val)
+                pre.next = head.next;
+            else
+                pre = head;
+                
+            head = head.next;
+        }
+        return dummy.next;
+    }
+}
+</code></pre>
+<p><strong>Thoughts:</strong></p>
+<ul>
+<li>Removal element operation is let the <code>next</code> pointer of the node point directly to the next node of the next node.</li>
+<li>If we want to delete the head node, we have two methods:
+<ul>
+<li>Operate the original linked list
+<ul>
+<li>If you want to remove the head node, it needs to write a separate piece of logic to handle it.</li>
+</ul>
+</li>
+<li>Set up a <code>dummy head node</code>
+<ul>
+<li>Handle all nodes of the original linked list by a unified method.</li>
+<li>When returning, the new head node is <code>return dummy.next</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="leetcode-707-design-linked-list">LeetCode 707. Design Linked List</h1>
+<p><a href="https://leetcode.com/problems/design-linked-list/description/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class ListNode {
+    int val;
+    ListNode next;
+    ListNode(){}
+    ListNode(int val){
+        this.val = val;
+    }
+}
+class MyLinkedList {
+    int size;
+    ListNode dummyHead;
+    
+    // initialize linked list
+    public MyLinkedList() {
+        size = 0;
+        dummyHead = new ListNode(0);
+    }
+    
+    public int get(int index) {
+        if(index &lt; 0 || index &gt;=size)
+            return -1;
+        ListNode pre = dummyHead;
+        // because there is a dummy head, so we use i&lt;=index
+        for(int i=0; i&lt;=index; i++){
+            pre = pre.next;
+        }
+        return pre.val;
+    }
+    
+    public void addAtHead(int val) {
+        addAtIndex(0, val);
+    }
+    
+    public void addAtTail(int val) {
+        addAtIndex(size, val);
+    }
+    
+    public void addAtIndex(int index, int val) {
+        if(index&lt;0)
+            index = 0;
+        if(index&gt;size)
+            return;
+        size++;
+        ListNode pre = dummyHead;
+        for(int i=0; i&lt;index; i++){
+            pre = pre.next;
+        }
+        ListNode toAdd = new ListNode(val);
+        toAdd.next = pre.next;
+        pre.next = toAdd;
+    }
+    
+    public void deleteAtIndex(int index) {
+        if(index &lt; 0 || index &gt;= size)
+            return;
+        size--;
+        ListNode pre = dummyHead;
+        for(int i = 0; i&lt;index; i++){
+            pre = pre.next;
+        }
+        pre.next = pre.next.next;
+    }
+}
+
+/**
+ * Your MyLinkedList object will be instantiated and called as such:
+ * MyLinkedList obj = new MyLinkedList();
+ * int param_1 = obj.get(index);
+ * obj.addAtHead(val);
+ * obj.addAtTail(val);
+ * obj.addAtIndex(index,val);
+ * obj.deleteAtIndex(index);
+ */
+</code></pre>
+<p><strong>Thoughts:</strong></p>
+<ul>
+<li>Don't forget to initilize the linked list</li>
+<li>Because there is a dummy head, so we use <code>i&lt;=index</code> in <code>get(index)</code> method</li>
+</ul>
+<h1 id="leetcode-206-reverse-linked-list">LeetCode 206. Reverse Linked List</h1>
+<p><a href="https://leetcode.com/problems/reverse-linked-list/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode dummy = null;
+        ListNode cur = head;
+        ListNode pre = dummy;
+        ListNode temp = null;
+        while(cur != null){
+            temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
+    }
+}
+</code></pre>
+<p><strong>Thoughts</strong></p>
+<ul>
+<li>Specific procedures：
+<ul>
+<li>Define a <code>cur</code> node points to the head node. Define a null <code>pre</code> node</li>
+<li>Save <code>cur.next</code> by <code>tmp</code></li>
+<li>Change <code>cur.next</code> to <code>pre</code>. At this time, we reversed the first node.</li>
+<li>Looping this reverse logic, continue to move <code>pre</code> and <code>cur</code></li>
+<li>Finally, the <code>cur</code> node points to the <code>null</code>. Complete reverse and return the new head node <code>pre</code>.</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#basic-concepts-of-linked-list">Basic Concepts of Linked List</a></li>
+<li><a href="#leetcode-203-remove-linked-list-elements">LeetCode 203. Remove Linked List Elements</a></li>
+<li><a href="#leetcode-707-design-linked-list">LeetCode 707. Design Linked List</a></li>
+<li><a href="#leetcode-206-reverse-linked-list">LeetCode 206. Reverse Linked List</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/day-2-or-977-squares-of-a-sorted-array-or-209-minimum-size-subarray-sum-or-59-spiral-matrix-ii/">
+              <h3 class="post-title">
+                Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

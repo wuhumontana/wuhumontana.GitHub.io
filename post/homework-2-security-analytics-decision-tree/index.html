@@ -1,0 +1,346 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Homework 2 - Security Analytics - Decision Tree | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Homework 2 - Security Analytics - Decision Tree | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="1. Use a decision tree classifier (default) to train and test the malicious URL dataset. (2pt)
+
+link: https://www.kaggle..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Homework 2 - Security Analytics - Decision Tree
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-03-22
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://miro.medium.com/v2/resize:fit:1400/1*Ef7iAF-OnGg3YaQ8-EkMgQ.jpeg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><strong>1. Use a decision tree classifier (default) to train and test the malicious URL dataset. (2pt)</strong></p>
+<ul>
+<li>link: <a href="https://www.kaggle.com/akashkr/phishing-url-eda-and-modelling">https://www.kaggle.com/akashkr/phishing-url-eda-and-modelling</a></li>
+<li>Use 30% for training and 70% for testing</li>
+<li>What is the accuracy score?</li>
+</ul>
+<p><strong>2. Explore how the tree depth number can affect the accuracy score (3 pt)</strong></p>
+<ul>
+<li>Make a loop to set max_depth to 10, 20, 30…until 100, and observe the accuracy score change</li>
+<li>What’s the tree depth number that can get the best accuracy score?</li>
+</ul>
+<p><strong>3. Use random forest to repeat step 2. What’s your observation? (3 pt)</strong><br>
+<strong>4. Try both the decision tree and random forests with the credit card fraud dataset. What’s your observation on accuracy score change? (2 pt)</strong></p>
+<p><a href="https://drive.google.com/file/d/1dHKJpxRESLn4cc8EHJvcrJ2Kxz8GKsEK/view?usp=share_link">creditcard.csv</a><br>
+<a href="https://drive.google.com/file/d/1ucNSs4U5otnjULfapxOPbtLXQGXDBKBM/view?usp=share_link">dataset.csv</a><br>
+<a href="https://drive.google.com/file/d/1wbvWmb0CbLRk_bkT71W8UVMkZVG870yZ/view?usp=share_link">hw2_Kyle Wang.ipynb</a></p>
+<pre><code class="language-python">import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, roc_auc_score
+
+urls = pd.read_csv(&quot;dataset.csv&quot;)
+
+X = urls.iloc[:, 1:30]
+y = urls['Result']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.7, random_state=1) # 30% training and 70% test 
+clf = DecisionTreeClassifier()
+clf = clf.fit(X_train,y_train)
+y_pred = clf.predict(X_test)
+
+print(&quot;Accuracy:&quot;, accuracy_score(y_test, y_pred))
+</code></pre>
+<p>Accuracy: 0.9484429512856958</p>
+<pre><code class="language-python">DEPTH = 10;
+# Make a loop to set max_depth to 10, 20, 30…until 100
+for i in range(10):
+    print(&quot;max_depth:&quot;, DEPTH)
+    clf = DecisionTreeClassifier(max_depth=DEPTH)
+    clf = clf.fit(X_train,y_train)
+    y_pred = clf.predict(X_test)
+    print(&quot;Accuracy:&quot;, accuracy_score(y_test, y_pred))
+    DEPTH += 10
+</code></pre>
+<p>max_depth: 10<br>
+Accuracy: 0.9381056984106474<br>
+max_depth: 20<br>
+Accuracy: 0.9488305982685101<br>
+max_depth: 30<br>
+Accuracy: 0.9477968729810053<br>
+max_depth: 40<br>
+Accuracy: 0.9505104018607056<br>
+max_depth: 50<br>
+Accuracy: 0.9477968729810053<br>
+max_depth: 60<br>
+Accuracy: 0.9481845199638196<br>
+max_depth: 70<br>
+Accuracy: 0.9489598139294483<br>
+max_depth: 80<br>
+Accuracy: 0.9461170693888099<br>
+max_depth: 90<br>
+Accuracy: 0.9497351078950769<br>
+max_depth: 100<br>
+Accuracy: 0.9490890295903863</p>
+<p>When max_depth = 10, the accuracy always is the lowest. The trend of the accuracy is to rise first and then level off.<br>
+In most cases, when max_depth = 60 can get the best accuracy score.</p>
+<hr>
+<pre><code class="language-python">from sklearn.ensemble import RandomForestClassifier
+DEPTH = 10;
+# Make a loop to set max_depth to 10, 20, 30…until 100
+for i in range(10):
+    print(DEPTH)
+    clf = RandomForestClassifier(max_depth=DEPTH)
+    clf = clf.fit(X_train,y_train)
+    y_pred = clf.predict(X_test)
+    print(&quot;Accuracy:&quot;, accuracy_score(y_test, y_pred))
+    DEPTH += 10
+</code></pre>
+<p>10<br>
+Accuracy: 0.9483137356247577<br>
+20<br>
+Accuracy: 0.9594262824654348<br>
+30<br>
+Accuracy: 0.9591678511435586<br>
+40<br>
+Accuracy: 0.9598139294482492<br>
+50<br>
+Accuracy: 0.9589094198216824<br>
+60<br>
+Accuracy: 0.960847654735754<br>
+70<br>
+Accuracy: 0.9605892234138778<br>
+80<br>
+Accuracy: 0.960847654735754<br>
+90<br>
+Accuracy: 0.9603307920920016<br>
+100<br>
+Accuracy: 0.9592970668044967</p>
+<p>The overall accuracy has been slightly improved. The oeverall trend unchanged.</p>
+<hr>
+<pre><code class="language-python">cards = pd.read_csv(&quot;creditcard.csv&quot;)
+
+X = cards.iloc[:, 0:30]
+y = cards['Class']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.7, random_state=1) # 30% training and 70% test 
+DEPTH = 10;
+# Make a loop to set max_depth to 10, 20, 30…until 100
+for i in range(10):
+    print(&quot;max_depth:&quot;, DEPTH)
+    clf = DecisionTreeClassifier(max_depth=DEPTH)
+    clf = clf.fit(X_train,y_train)
+    y_pred = clf.predict(X_test)
+    print(&quot;Accuracy:&quot;, accuracy_score(y_test, y_pred))
+    DEPTH += 10
+</code></pre>
+<p>max_depth: 10<br>
+Accuracy: 0.9993027863466506<br>
+max_depth: 20<br>
+Accuracy: 0.999117197100795<br>
+max_depth: 30<br>
+Accuracy: 0.999132244877486<br>
+max_depth: 40<br>
+Accuracy: 0.9991121811752314<br>
+max_depth: 50<br>
+Accuracy: 0.9990770696962857<br>
+max_depth: 60<br>
+Accuracy: 0.999102149324104<br>
+max_depth: 70<br>
+Accuracy: 0.999102149324104<br>
+max_depth: 80<br>
+Accuracy: 0.9991372608030497<br>
+max_depth: 90<br>
+Accuracy: 0.9990770696962857<br>
+max_depth: 100<br>
+Accuracy: 0.9990319263662127</p>
+<p>The overall accuracy has a downward trend ———— DecisionTreeClassifier</p>
+<hr>
+<pre><code class="language-python">DEPTH = 10;
+# Make a loop to set max_depth to 10, 20, 30…until 100
+for i in range(10):
+    print(&quot;max_depth:&quot;, DEPTH)
+    clf = RandomForestClassifier(max_depth=DEPTH)
+    clf = clf.fit(X_train,y_train)
+    y_pred = clf.predict(X_test)
+    print(&quot;Accuracy:&quot;, accuracy_score(y_test, y_pred))
+    DEPTH += 10
+</code></pre>
+<p>max_depth: 10<br>
+Accuracy: 0.9994181526346149<br>
+max_depth: 20<br>
+Accuracy: 0.9994382163368696<br>
+max_depth: 30<br>
+Accuracy: 0.9994332004113059<br>
+max_depth: 40<br>
+Accuracy: 0.9994382163368696<br>
+max_depth: 50<br>
+Accuracy: 0.9994231685601785<br>
+max_depth: 60<br>
+Accuracy: 0.9994332004113059<br>
+max_depth: 70<br>
+Accuracy: 0.9994332004113059<br>
+max_depth: 80<br>
+Accuracy: 0.9994181526346149<br>
+max_depth: 90<br>
+Accuracy: 0.9994131367090512<br>
+max_depth: 100<br>
+Accuracy: 0.9994281844857422</p>
+<p>The overall trend of accuracy is relative stable ———— RandomForestClassifier</p>
+<hr>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/homework-1-security-analytics-a-simple-task-using-jupyter-notebook/">
+              <h3 class="post-title">
+                Homework 1 - Security Analytics - A simple task using Jupyter Notebook
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,356 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+Basics of Array Theory
+LeetCode 704. Binary Search
+LeetCode 27. Remove Element
+LeetCode 35. Search Insert Position
+Leet..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-02-26
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-1-or-704-binary-search-or-27-remove-element-or-35-search-insert-position-or-34-first-and-last-position-of-element-in-sorted-array.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><ul class="markdownIt-TOC">
+<li><a href="#basics-of-array-theory">Basics of Array Theory</a></li>
+<li><a href="#leetcode-704-binary-search">LeetCode 704. Binary Search</a></li>
+<li><a href="#leetcode-27-remove-element">LeetCode 27. Remove Element</a></li>
+<li><a href="#leetcode-35-search-insert-position">LeetCode 35. Search Insert Position</a></li>
+<li><a href="#leetcode-34-first-and-last-position-of-element-in-sorted-array">LeetCode 34. First and Last Position of Element in Sorted Array</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="basics-of-array-theory">Basics of Array Theory</h1>
+<ul>
+<li>Array index start from <code>0</code></li>
+<li>Array is a data collection stored in the contiguous memory space</li>
+<li>Because the array's memory space is contiguous, we must modify the other element address when deleting or adding elements</li>
+<li>We can't delete array elements, only overwritten</li>
+</ul>
+<hr>
+<h1 id="leetcode-704-binary-search">LeetCode 704. Binary Search</h1>
+<p><a href="https://leetcode.com/problems/binary-search/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+	// avoid looping when tartget less than nums[0] and bigger than nums[nums.length - 1]
+    if(target &lt; nums[0] || target &gt; nums[nums.length-1])
+    	return -1;
+    public int search(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length-1;
+        // left-closed and right-closed interval
+        while(left &lt;= right) {
+            int middle = (left + right) &gt;&gt; 1;
+            if(nums[middle] &gt; target)
+                right = middle - 1;
+            else if(nums[middle] &lt; target)
+                left = middle + 1;
+            else    
+                return middle;
+        }
+        return -1;
+    }
+}
+</code></pre>
+<p><strong>Thoughts:</strong></p>
+<ul>
+<li>Avoid looping when <code>target</code> less than <code>nums[0]</code> and bigger than <code>nums[nums.length - 1]</code></li>
+<li>Two greater than signs <code>&gt;&gt;</code> means move one place to the right. <code>&gt;&gt; 1</code> means divide by 2.</li>
+<li>Two less than signs <code>&lt;&lt;</code> means move one place to the left. <code>&lt;&lt; 1</code> means multiple 2.</li>
+<li>The prerequisite of using binary search is an <code>ordered distinct</code> array.</li>
+<li>We have to follow the <code>loop invariant</code> principle. It means we should do our boundary operation according to the interval's definition.</li>
+<li>We define target in a <code>left-closed and right-closed interval</code>,that is<code>[left, right]</code>.</li>
+<li>We  use <code>left &lt;= right</code> in the while loop. Because <code>left == right</code> makes sense.</li>
+</ul>
+<hr>
+<h1 id="leetcode-27-remove-element">LeetCode 27. Remove Element</h1>
+<p><a href="https://leetcode.com/problems/remove-element/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public int removeElement(int[] nums, int val) {
+        int slow = 0;
+        for(int fast=0; fast &lt; nums.length; fast++){
+            if(nums[fast] != val){
+                nums[slow] = nums[fast];
+                slow++;
+            }
+        }
+        return slow;
+    }
+}
+</code></pre>
+<p>Time Complexity: <code>O(n)</code><br>
+Space Complexity: <code>O(1)</code></p>
+<p><strong>Thoughts:</strong></p>
+<ul>
+<li>I adopt the <code>Two Pointers Method</code>. Complete the work of <code>2 for loop</code> under <code>1 for loop</code> through a slow and a fast point.</li>
+<li>The principle of solving this two-pointer question is clarifying the definition of these two pointers.</li>
+<li><code>Fast Point</code>: find elements of the new array that doesn't contain the target <code>val</code>.</li>
+<li><code>Slow Point</code>: update new array index.</li>
+</ul>
+<hr>
+<h1 id="leetcode-35-search-insert-position">LeetCode 35. Search Insert Position</h1>
+<p><a href="https://leetcode.com/problems/search-insert-position/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        while(left &lt;= right){
+            int middle = (left + right) &gt;&gt; 1;
+            if(nums[middle] == target)
+                return middle;
+            else if(nums[middle] &gt; target)
+                right = middle - 1;
+            else if(nums[middle] &lt; target)
+                left = middle + 1;
+        }  
+        return right + 1;
+    }
+}
+</code></pre>
+<p>Time Complexity：<code>O(log n)</code><br>
+Space Complexity：<code>O(1)</code></p>
+<p><strong>Thoughts:</strong></p>
+<ul>
+<li>If the question says <code>Given a sorted array of distinct integers</code>, we can consider whether we could use <code>Binary Search</code>.</li>
+<li>Accoring to <code>loop invariant</code> principle. We define target in a <code>left-closed and right-closed interval</code>, that is <code>[left, right]</code></li>
+<li>Insert the target value to the array，there are four situations：
+<ul>
+<li>1、target value comes before all elements of the array: <code>[0, -1]</code></li>
+<li>2、target value is equal to an element in the array:  return middle</li>
+<li>3、target value is in the array： <code>[left, right]</code>，return  right + 1</li>
+<li>4、target value is behind all elements：<code>[left, right]</code>：return right + 1;<br>
+<img src="https://img-blog.csdnimg.cn/20201216232148471.png#pic_center" alt="在这里插入图片描述" width="330" height="176" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="leetcode-34-first-and-last-position-of-element-in-sorted-array">LeetCode 34. First and Last Position of Element in Sorted Array</h1>
+<p><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int rightBorder = getRightBorder(nums, target);
+        int leftBorder = getLeftBorder(nums, target);
+        // Situation one: `target` in the left or right of the array
+        if (rightBorder == -2 || leftBorder == -2)
+            return new int[]{-1,-1};
+        // Situation three: `target` in the array's range, also in the array.
+        if (rightBorder - leftBorder &gt; 1)
+            return new int[]{leftBorder + 1, rightBorder - 1};
+        // Situation two: `target` in the array's range but not in the array. 
+        return new int[]{-1, -1};
+    }
+
+    int getLeftBorder(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        int leftBorder = -2;
+        while(left &lt;= right) {
+            int middle = (left + right) &gt;&gt; 1;
+            // update right when nums[middle] == target
+            if (nums[middle] &gt;= target) {
+                right = middle - 1;
+                leftBorder = right;
+            } else {
+                left = middle + 1;
+            }            
+        }
+        return leftBorder;
+    }
+    
+    int getRightBorder(int[] nums, int target) {
+        int left = 0, right = nums.length-1;
+        int rightBorder = -2;
+        while(left &lt;= right) {
+            int middle = (left + right) &gt;&gt; 1;
+            if (nums[middle] &gt; target) {
+                right = middle -1;
+            } 
+            // update left when nums[middle] == target
+            else {
+                left = middle + 1;
+                rightBorder = left;
+            }            
+        }
+        return rightBorder;
+    }
+}
+</code></pre>
+<p><strong>Thoughts:</strong></p>
+<ul>
+<li>There are three situations:
+<ul>
+<li>Situation one: <code>target</code> in the left or right of the array. Like an array <code>{3, 4, 5}</code>, the target is <code>2</code> or <code>6</code>. Should return <code>{-1, -1}</code></li>
+<li>Situation two: <code>target</code> in the array's range but not in the array. Like an array <code>{3, 6, 7}</code>, the target is <code>5</code>. Should  return <code>{-1, -1}</code></li>
+<li>Situation three: <code>target</code> in the array's range, also in the array. Like an array <code>{3, 6, 7}</code>, the target is <code>6</code>. Should return <code>{1, 1}</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#basics-of-array-theory">Basics of Array Theory</a></li>
+<li><a href="#leetcode-704-binary-search">LeetCode 704. Binary Search</a></li>
+<li><a href="#leetcode-27-remove-element">LeetCode 27. Remove Element</a></li>
+<li><a href="#leetcode-35-search-insert-position">LeetCode 35. Search Insert Position</a></li>
+<li><a href="#leetcode-34-first-and-last-position-of-element-in-sorted-array">LeetCode 34. First and Last Position of Element in Sorted Array</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

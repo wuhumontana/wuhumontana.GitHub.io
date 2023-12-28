@@ -1,0 +1,313 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-02-27
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-6-or-242-valid-anagram-or-349-intersection-of-two-arrays-or-202-happy-numbe-or-1-two-sum.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><a href="https://blog.csdn.net/kyle313606922/article/details/128260518">Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128272450">Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128281122">Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128295618">Day 4 | 24. Swap Nodes in Pairs| 19. Remove Nth Node From End of List| 160.Intersection of Two Lists</a><br>
+<ul class="markdownIt-TOC">
+<li><a href="#basic-concept-of-hash-table">Basic Concept of Hash Table</a></li>
+<li><a href="#leetcode-242-valid-anagram">LeetCode 242. Valid Anagram</a></li>
+<li><a href="#leetcode-349-intersection-of-two-arrays">LeetCode 349. Intersection of Two Arrays</a></li>
+<li><a href="#leetcode-202-happy-numbe">LeetCode 202. Happy Numbe</a></li>
+<li><a href="#leetcode-1-two-sum">LeetCode 1. Two Sum</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="basic-concept-of-hash-table">Basic Concept of Hash Table</h1>
+<ul>
+<li>A hash map usually was used to <code>judge whether an element exists in a list</code>.</li>
+<li>Like if we want to know whether a student studies in this school. Through the hash function, we can convert the student name to <code>hash code</code>, which is the <code>index</code> of the hash table. Then we can query fast whether this student is in this school by the <code>index</code>.</li>
+<li>There are two methods to solve hash collision: <code>Zipper Method</code> and <code>Linear Collision Method</code></li>
+<li>There there three types of data structures: <code>array</code>、<code>set</code>、<code>map</code></li>
+</ul>
+<h1 id="leetcode-242-valid-anagram">LeetCode 242. Valid Anagram</h1>
+<p><a href="https://leetcode.com/problems/valid-anagram/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public boolean isAnagram(String s, String t) {
+    	// 
+        int[] record = new int[26];
+        for(int i = 0; i &lt; s.length(); i++)
+            record[s.charAt(i) - 'a']++; 
+        
+        for(int j =0; j &lt; t.length(); j++)
+            record[t.charAt(j) - 'a']--;
+        
+        for(int count : record){
+            if(count != 0)
+                return false;
+        }
+        return true;
+    }
+}
+</code></pre>
+<p><strong>Thoughts:</strong></p>
+<ul>
+<li>Define a <code>record</code> array for recording the presenting time of every character.</li>
+<li>Traverse <code>s</code>, perform <code>+1</code> operation on the value on the hash table index corresponding to the characters appearing in <code>s</code></li>
+<li>Traverse <code>t</code>, perform <code>-1</code> operation on the value on the has table index correaponding to the characters appearing is <code>t</code></li>
+<li>Iterate <code>record</code>, if exist an element that doesn't equal to <code>0</code>, return <code>false</code></li>
+</ul>
+<h1 id="leetcode-349-intersection-of-two-arrays">LeetCode 349. Intersection of Two Arrays</h1>
+<p><a href="https://leetcode.com/problems/valid-anagram/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        if(nums1 == null || nums1.length == 0 || nums2 == null|| nums2.length ==0)
+            return new int[0];
+        
+        Set&lt;Integer&gt; set1 = new HashSet&lt;&gt;();
+        Set&lt;Integer&gt; res = new HashSet&lt;&gt;();
+        for(int i : nums1)
+            set1.add(i);
+        for(int j : nums2) {
+            if(set1.contains(j)){
+                res.add(j);
+            }
+        }
+        return res.stream().mapToInt(x-&gt;x).toArray();
+    }
+}
+</code></pre>
+<p><strong>Thought:</strong></p>
+<ul>
+<li>If the number of the hash value is relatively small, especially scattered, and the span is very larger, using an array will cause a great waste of space. So in this question, we adopt <code>set</code></li>
+<li>But <code>set</code> not only takes up more space than <code>array</code> but also is slower than the array because the set needs to do the hash calculation.</li>
+<li>In this question, <code>HashSet</code> doesn't have multiple elements, and it is <code>unordered</code>.</li>
+<li>Convert a set to an array: <code>res.stream().mapToInt(x-&gt;x).toArray()</code></li>
+</ul>
+<h1 id="leetcode-202-happy-numbe">LeetCode 202. Happy Numbe</h1>
+<p><a href="https://leetcode.com/problems/valid-anagram/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public boolean isHappy(int n) {
+        Set&lt;Integer&gt; record = new HashSet&lt;&gt;();
+        while(n != 1){
+            record.add(n);
+            n = getNextNumber(n);
+            if(record.contains(n))
+                return false;
+        }
+        return true;
+    }
+
+    int getNextNumber(int n){
+        int sum = 0;
+        while(n!=0){
+            int temp = n%10;
+            sum += temp*temp;
+            n /= 10;
+        }
+        return sum;
+    }
+}
+</code></pre>
+<p><strong>Thoughts:</strong></p>
+<ul>
+<li>Define a <code>record</code> set to store the possible value of <code>n</code> after every lopping.</li>
+<li>Notice how to calculate the next value of <code>n</code>.</li>
+</ul>
+<h1 id="leetcode-1-two-sum">LeetCode 1. Two Sum</h1>
+<p><a href="https://leetcode.com/problems/two-sum/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
+        int[] res = new int[2];
+        for(int i = 0; i &lt; nums.length; i++){
+            if(map.containsKey(target - nums[i])){
+                res[0] = map.get(target - nums[i]);
+                res[1] = i;
+            }
+            map.put(nums[i], i);
+        }
+        return res;
+    }
+}
+</code></pre>
+<p><strong>Thoughts</strong></p>
+<ul>
+<li>We not only need to know the element value but also the index of the element. So the <code>map</code> is suitable. We can use the <code>key</code> to store element value and use <code>value</code> to store index.</li>
+<li>When traversing the array, we just query the map to determine whether it has the corresponding value that adds up to <code>target</code></li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#basic-concept-of-hash-table">Basic Concept of Hash Table</a></li>
+<li><a href="#leetcode-242-valid-anagram">LeetCode 242. Valid Anagram</a></li>
+<li><a href="#leetcode-349-intersection-of-two-arrays">LeetCode 349. Intersection of Two Arrays</a></li>
+<li><a href="#leetcode-202-happy-numbe">LeetCode 202. Happy Numbe</a></li>
+<li><a href="#leetcode-1-two-sum">LeetCode 1. Two Sum</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/day-4-or-24-swap-nodes-in-pairsor-19-remove-nth-node-from-end-of-listor-160intersection-of-two-lists/">
+              <h3 class="post-title">
+                Day 4 | 24. Swap Nodes in Pairs| 19. Remove Nth Node From End of List| 160.Intersection of Two Lists
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

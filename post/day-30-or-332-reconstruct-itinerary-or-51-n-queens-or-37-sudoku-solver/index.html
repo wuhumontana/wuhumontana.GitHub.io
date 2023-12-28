@@ -1,0 +1,364 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 30 | 332. Reconstruct Itinerary | 51. N-Queens | 37. Sudoku Solver | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 30 | 332. Reconstruct Itinerary | 51. N-Queens | 37. Sudoku Solver | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 30 | 332. Reconstruct Itinerary | 51. N-Queens | 37. Sudoku Solver
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-02-27
+              </span>
+              <span>
+                7 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-30-or-332-reconstruct-itinerary-or-51-n-queens-or-37-sudoku-solver.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><a href="https://blog.csdn.net/kyle313606922/article/details/128260518">Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128272450">Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128281122">Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128295618">Day 4 | 24. Swap Nodes in Pairs| 19. Remove Nth Node From End of List| 160.Intersection of Two Lists</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128310593">Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128324032">Day 7 | 454. 4Sum II | 383. Ransom Note | 15. 3Sum | 18. 4Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128325957">Day 8 | 344. Reverse String | 541. Reverse String II | 替换空格 | 151.Reverse Words in a String | 左旋转字符串</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128337737">Day 9 | 28. Find the Index of the First Occurrence in a String | 459. Repeated Substring Pattern</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128358488">Day 10 | 232. Implement Queue using Stacks | 225. Implement Stack using Queue</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128359564">Day 11 | 20. Valid Parentheses | 1047. Remove All Adjacent Duplicates In String | 150. Evaluate RPN</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128382265">Day 13 | 239. Sliding Window Maximum | 347. Top K Frequent Elements</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128392214">Day 14 | 144.Binary Tree Preorder Traversal | 94.Binary Tree Inorder Traversal| 145.Binary Tree Postorder Traversal</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128405092">Day 15 | 102. Binary Tree Level Order Traversal | 226. Invert Binary Tree | 101. Symmetric Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128415322">Day 16 | 104.MaximumDepth of BinaryTree| 111.MinimumDepth of BinaryTree| 222.CountComplete TreeNodes</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128415322">Day 17 | 110. Balanced Binary Tree | 257. Binary Tree Paths | 404. Sum of Left Leaves</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128451752">Day 18 | 513. Find Bottom Left Tree Value | 112. Path Sum | 105&amp;106. Construct Binary Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128466708">Day 20 | 654. Maximum Binary Tree | 617. Merge Two Binary Trees | 700.Search in a Binary Search Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128477578">Day 21 | 530. Minimum Absolute Difference in BST | 501. Find Mode in Binary Search Tree | 236. Lowes</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128490148">Day 22 | 235. Lowest Common Ancestor of a BST | 701. Insert into a BST | 450. Delete Node in a BST</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128542480">Day 23 | 669. Trim a BST | 108. Convert Sorted Array to BST | 538. Convert BST to Greater Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128572676">Day 24 | 77. Combinations</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128588207">Day 25 | 216. Combination Sum III | 17. Letter Combinations of a Phone Number</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128597793">Day 27 | 39. Combination Sum | 40. Combination Sum II | 131. Palindrome Partitioning</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128608537">Day 28 | 93. Restore IP Addresses | 78. Subsets | 90. Subsets II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128623556">Day 29 | 491. Non-decreasing Subsequences | 46. Permutations | 47. Permutations II</a></p>
+<p><ul class="markdownIt-TOC">
+<li><a href="#leetcode-332-reconstruct-itinerary">LeetCode 332. Reconstruct Itinerary</a></li>
+<li><a href="#leetcode-51-n-queens">LeetCode 51. N-Queens</a></li>
+<li><a href="#leetcode-37-sudoku-solver">LeetCode 37. Sudoku Solver</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="leetcode-332-reconstruct-itinerary">LeetCode 332. Reconstruct Itinerary</h1>
+<p><a href="https://leetcode.com/problems/reconstruct-itinerary/">Question Link</a></p>
+<pre><code class="language-java">class Solution {
+    List&lt;String&gt; result = new ArrayList&lt;&gt;();
+    LinkedList&lt;String&gt; path = new LinkedList&lt;&gt;();
+    boolean[] used;
+
+    public List&lt;String&gt; findItinerary(List&lt;List&lt;String&gt;&gt; tickets) {
+        // Order by ticket asc
+        Collections.sort(tickets, (a, b) -&gt; a.get(1).compareTo(b.get(1)));
+        path.add(&quot;JFK&quot;);
+        used = new boolean[tickets.size()];
+        backTracking(tickets);
+        return path;
+    }
+
+    boolean backTracking(List&lt;List&lt;String&gt;&gt; tickets){
+        if(path.size() == tickets.size() + 1){
+            result = new ArrayList&lt;&gt;(path);
+            return true;
+        }
+        for(int i = 0; i &lt; tickets.size(); i++){
+            if(!used[i] &amp;&amp; tickets.get(i).get(0).equals(path.getLast())){
+                path.add(tickets.get(i).get(1));
+                used[i] = true;
+                if(backTracking(tickets))
+                    return true;
+                used[i] = false;
+                path.removeLast();
+            }
+        }
+        return false;
+    }
+}
+</code></pre>
+<ul>
+<li>Terminal condition: when the number of airports equals the number of <code>routes + 1</code></li>
+</ul>
+<h1 id="leetcode-51-n-queens">LeetCode 51. N-Queens</h1>
+<p><a href="https://leetcode.com/problems/n-queens/">Question Link</a></p>
+<pre><code class="language-java">class Solution {
+    List&lt;List&lt;String&gt;&gt; res = new ArrayList&lt;&gt;();
+
+    public List&lt;List&lt;String&gt;&gt; solveNQueens(int n) {
+        char[][] chessboard = new char[n][n];
+        for(char[] c : chessboard)
+            Arrays.fill(c, '.');
+        backTracing(n, 0, chessboard);
+        return res;
+    }
+
+    void backTracing(int n, int row, char[][] chessboard){
+        if(row == n){
+            res.add(array2List(chessboard));
+            return;
+        }
+        for(int col = 0; col &lt; n; col++){
+            if(isValid(col, row, n, chessboard)){
+                chessboard[row][col] = 'Q';
+                backTracing(n, row + 1, chessboard);
+                chessboard[row][col] = '.';
+            }
+        }
+    }
+
+    boolean isValid(int col, int row, int n, char[][] chessboard){
+        // check the column
+        for(int i = 0; i &lt; row; i++){
+            if(chessboard[i][col] == 'Q')
+                return false;
+        }
+        // check the 45° diagonal
+        for(int i = row - 1, j = col - 1; i &gt;= 0 &amp;&amp; j &gt;= 0; i--, j--){
+            if(chessboard[i][j] == 'Q')
+                return false;
+        }
+        // check the 135° diagonal
+        for(int i = row - 1, j = col + 1; i &gt;= 0 &amp;&amp; j &lt; n; i--, j++){
+            if(chessboard[i][j] == 'Q')
+                return false;
+        }
+        return true;
+    }
+
+    List&lt;String&gt; array2List(char[][] chessboard){
+        List&lt;String&gt; list = new ArrayList&lt;&gt;();
+        for(char[] c : chessboard)
+            list.add(String.copyValueOf(c));
+        return list;
+    }
+
+}
+</code></pre>
+<ul>
+<li>Go from top to bottom, left to right to verfy each position.</li>
+</ul>
+<h1 id="leetcode-37-sudoku-solver">LeetCode 37. Sudoku Solver</h1>
+<p><a href="https://leetcode.com/problems/sudoku-solver/">Question Link</a></p>
+<pre><code class="language-java">class Solution {
+    public void solveSudoku(char[][] board) {
+        backTracing(board);
+    }
+
+    boolean backTracing(char[][] board){
+        for(int i = 0; i &lt; 9; i++){          // Traverse over rows
+            for(int j = 0; j &lt; 9; j++){      // Traverse over columns
+                if(board[i][j] != '.')       // Skip the non-empty cells
+                    continue;
+                for(char k = '1'; k &lt;= '9'; k++){   
+                    if(isValidSudoku(i, j, k, board)){
+                        board[i][j] = k;
+                        if(backTracing(board))
+                            return true;
+                        board[i][j] = '.';
+                    }
+                }
+                // If 1-9 is invalid 
+                return false;
+            }
+        }
+        return true;
+    }
+
+    boolean isValidSudoku(int row, int col, int k, char[][] board){
+        // Check whether the data of the same row is duplicated
+        for(int i = 0; i &lt; 9; i++){
+            if(board[row][i] == k)
+                return false;
+        }
+        // Check whether the data of the same column is duplicated
+        for(int j = 0; j &lt; 9; j++){
+            if(board[j][col] == k)
+                return false;
+        }
+        // Check whether the data of the 9x9 matric is duplicated
+        int startRow = (row / 3) * 3;
+        int startCol = (col / 3) * 3;
+
+        for(int i = startRow; i &lt; startRow + 3; i++){
+            for(int j = startCol; j &lt; startCol + 3; j++){
+                if(board[i][j] == k)
+                    return false;
+            }
+        }
+        return true;
+    }
+}
+</code></pre>
+<ul>
+<li>In backtracing, the return value is <code>void</code> if we collect all paths.  If we only collect one path, the return value should be <code>boolean</code>.</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#leetcode-332-reconstruct-itinerary">LeetCode 332. Reconstruct Itinerary</a></li>
+<li><a href="#leetcode-51-n-queens">LeetCode 51. N-Queens</a></li>
+<li><a href="#leetcode-37-sudoku-solver">LeetCode 37. Sudoku Solver</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/day-29-or-491-non-decreasing-subsequences-or-46-permutations-or-47-permutations-ii/">
+              <h3 class="post-title">
+                Day 29 | 491. Non-decreasing Subsequences | 46. Permutations | 47. Permutations II
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

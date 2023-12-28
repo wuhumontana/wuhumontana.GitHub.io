@@ -1,0 +1,283 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title> Lab 3 - Introduction to Cryptography | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title=" Lab 3 - Introduction to Cryptography | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Lab Group Memember: Kyle Wang、Rawan Makki、Saket Laddha
+Lab Task 1: Becoming a Certiﬁcate Authority (CA)
+You will be prom..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+               Lab 3 - Introduction to Cryptography
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-03-01
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://img.electronicdesign.com/files/base/ebm/electronicdesign/image/2020/05/PROMOCryptographyHandbook_Ch5.5eceabbf11917.png?auto=format,compress&amp;fit=crop&amp;h=556&amp;w=1000&amp;q=45" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><strong>Lab Group Memember: Kyle Wang、Rawan Makki、Saket Laddha</strong></p>
+<p><strong>Lab Task 1: Becoming a Certiﬁcate Authority (CA)</strong><br>
+You will be prompted for information and a password. Do not lose this password, because you will have to type the passphrase each time you want to use this CA to sign certiﬁcates for others. You will also be asked to ﬁll in some information, such as the Country Name, Common Name, etc. The output of the command are stored in two ﬁles: ca.key and ca.crt. The ﬁle ca.key contains the CA’s private key, while ca.crt contains the public-key certiﬁcate.</p>
+<p><strong>Results &amp; Comments:</strong></p>
+<ul>
+<li>
+<p>Copy <strong>openssl.cnf</strong> ﬁle into <strong>demoCA</strong> directory, and create several sub-directories and ﬁles:<br>
+<img src="https://wuhumontana.github.io/post-images/1678313190161.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Generate the self-signed certiﬁcate for the CA by the following command<br>
+<img src="https://wuhumontana.github.io/post-images/1678313195358.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Input PEM pass phrase and related information, get <strong>ca.key</strong> and <strong>ca.crt</strong><br>
+<img src="https://wuhumontana.github.io/post-images/1678313200188.png" alt="" loading="lazy"></p>
+</li>
+</ul>
+<hr>
+<p><strong>Lab Task 2: Creating a Certiﬁcate for SEEDPKILab2020.com</strong><br>
+Now, we become a root CA, we are ready to sign digital certiﬁcates for our customers. Our ﬁrst customer is a company called SEEDPKILab2020.com. For this company to get a digital certiﬁcate from a CA, it needs to go through three steps.<br>
+<strong>Results &amp; Comments:</strong></p>
+<ul>
+<li>
+<p>Step 1: Generate public/private key pair<br>
+<img src="https://wuhumontana.github.io/post-images/1678313205842.png" alt="" loading="lazy"><br>
+Content of server.key<br>
+<img src="https://wuhumontana.github.io/post-images/1678313210201.png" alt="" loading="lazy"><br>
+<img src="https://wuhumontana.github.io/post-images/1678313214657.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Step 2: Generate a Certiﬁcate Signing Request (CSR)<br>
+<img src="https://wuhumontana.github.io/post-images/1678313223136.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Step 3: Generating Certiﬁcates<br>
+Turns the certiﬁcate signing request (server.csr) into an X509 certiﬁcate (server.crt)<br>
+<img src="https://wuhumontana.github.io/post-images/1678313228426.png" alt="" loading="lazy"><br>
+<img src="https://wuhumontana.github.io/post-images/1678313233032.png" alt="" loading="lazy"></p>
+</li>
+</ul>
+<hr>
+<p><strong>Lab Task 3: Deploying Certiﬁcate in an HTTPS Web Server</strong><br>
+In this lab, we will explore how public-key certiﬁcates are used by websites to secure web browsing. We will set up an HTTPS website using openssl’s built-in web server.</p>
+<p><strong>Results &amp; Comments:</strong></p>
+<ul>
+<li>
+<p>Step 1: Conﬁguring DNS<br>
+<img src="https://wuhumontana.github.io/post-images/1678313241589.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Step 2: Conﬁguring the web server<br>
+Launch the web server using server.pem：<br>
+<img src="https://wuhumontana.github.io/post-images/1678313247167.png" alt="" loading="lazy"><br>
+Access the server using the following URL: https://SEEDPKILab2020.com:4433/<br>
+We found that this connection is not secure.<br>
+<img src="https://wuhumontana.github.io/post-images/1678313255456.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Step 3: Getting the browser to accept our CA certiﬁcate<br>
+I manually add my CA’s certiﬁcate to the Firefox browser:<br>
+<img src="https://wuhumontana.github.io/post-images/1678313266854.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Step 4: Testing our HTTPS website<br>
+Point the browser to https://SEEDPKILab2020.com:4433<br>
+We found that the connection become secure.<br>
+<img src="https://wuhumontana.github.io/post-images/1678313294541.png" alt="" loading="lazy"></p>
+<ul>
+<li>
+<p><strong>1.</strong>  Modify a single byte of server.pem, and restart the server, and reload the URL. What do you observe? Make sure you restore the original server.pem afterward. Note: the server may not be able to restart if certain places of server.pem is corrupted; in that case, choose another place to modify.<br>
+<em>I modified a byte of Public Key Info from <strong>00</strong> to <strong>11</strong>:</em><br>
+<img src="https://wuhumontana.github.io/post-images/1678313301954.png" alt="" loading="lazy"><br>
+The website still works normally after modification.<br>
+<img src="https://wuhumontana.github.io/post-images/1678313307107.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p><strong>2.</strong> Since SEEDPKILab2020.com points to the localhost, if we use <u><strong>https://localhost:4433</strong></u> instead, we will be connecting to the same web server. Please do so, describe and explain your observations.<br>
+<img src="https://wuhumontana.github.io/post-images/1678313312375.png" alt="" loading="lazy"></p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Lab Task 4: Deploying Certiﬁcate in an Apache-Based HTTPS Website</strong><br>
+The HTTPS server setup using openssl’s s server command is primarily for debugging and demonstration purposes. In this lab, we set up a real HTTPS web server based on Apache.<br>
+<strong>Results &amp; Comments:</strong></p>
+<ul>
+<li>
+<p>Add a VirtualHost entry to the ﬁle <strong>000-default.conf</strong><br>
+<img src="https://wuhumontana.github.io/post-images/1678313316775.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Add a VirtualHost entry to the <strong>default-ssl.conf</strong><br>
+<img src="https://wuhumontana.github.io/post-images/1678313323061.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Run a series of commands to enable SSL<br>
+<img src="https://wuhumontana.github.io/post-images/1678313327788.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Successfully browse the HTTPS site<br>
+<img src="https://wuhumontana.github.io/post-images/1678313332342.png" alt="" loading="lazy"></p>
+</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/lab-1-introduction-to-cryptography/">
+              <h3 class="post-title">
+                Lab 1 - Introduction to Cryptography
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

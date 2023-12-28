@@ -1,0 +1,359 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 10 | 232. Implement Queue using Stacks | 225. Implement Stack using Queue | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 10 | 232. Implement Queue using Stacks | 225. Implement Stack using Queue | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 10 | 232. Implement Queue using Stacks | 225. Implement Stack using Queue
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-02-27
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-10-or-232-implement-queue-using-stacks-or-225-implement-stack-using-queue.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><a href="https://blog.csdn.net/kyle313606922/article/details/128260518">Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128272450">Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128281122">Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128295618">Day 4 | 24. Swap Nodes in Pairs| 19. Remove Nth Node From End of List| 160.Intersection of Two Lists</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128310593">Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128324032">Day 7 | 454. 4Sum II | 383. Ransom Note | 15. 3Sum | 18. 4Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128325957">Day 8 | 344. Reverse String | 541. Reverse String II | 替换空格 | 151.Reverse Words in a String | 左旋转字符串</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128337737">Day 9 | 28. Find the Index of the First Occurrence in a String | 459. Repeated Substring Pattern</a><br>
+<ul class="markdownIt-TOC">
+<li><a href="#basic-concept-of-the-stack-and-the-queue">Basic Concept of the Stack and the Queue</a></li>
+<li><a href="#leetcode-232-implement-queue-using-stacks">LeetCode 232. Implement Queue using Stacks</a></li>
+<li><a href="#leetcode-225-implement-stack-using-queues">LeetCode 225. Implement Stack using Queues</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="basic-concept-of-the-stack-and-the-queue">Basic Concept of the Stack and the Queue</h1>
+<ul>
+<li>The <code>stack</code> is last-in-fist-out（<code>LIFO</code>）</li>
+<li>The <code>queue</code> is first in first out（<code>FIFO</code>）</li>
+<li>They don't allow traversal, and don't provide the iterator.</li>
+<li>The <code>stack</code> use pluggable containers to implement its function and provide unified interfaces to the outside world. That is, we can control what container to implement the part of the stack.</li>
+</ul>
+<hr>
+<h1 id="leetcode-232-implement-queue-using-stacks">LeetCode 232. Implement Queue using Stacks</h1>
+<p><a href="https://leetcode.com/problems/implement-queue-using-stacks/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class MyQueue {
+    Stack&lt;Integer&gt; stackIn;
+    Stack&lt;Integer&gt; stackOut; 
+
+    // Initiallize the data structure
+    public MyQueue() { 
+        stackIn = new Stack&lt;&gt;();  
+        stackOut = new Stack&lt;&gt;();
+    }
+    
+    public void push(int x) {
+        stackIn.push(x);
+    }
+    
+    public int pop() {
+        dumpStackIn();
+        return stackOut.pop();
+    }
+    
+    public int peek() {
+        dumpStackIn();
+        return stackOut.peek();
+    }
+    
+    public boolean empty() {
+        return stackIn.isEmpty()&amp;&amp;stackOut.isEmpty();
+    }
+
+    //If the stackOut is empty, dump all of the elements of the stackIn into the stackOut
+    private void dumpStackIn(){
+        if(!stackOut.isEmpty())
+            return;
+        while(!stackIn.isEmpty()){
+            stackOut.push(stackIn.pop());
+        }
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
+</code></pre>
+<p><strong>Thought:</strong></p>
+<ul>
+<li>When popping the stack:
+<ul>
+<li>If the <code>stackOut</code> is empty, dump all of the elements of the <code>stackIn</code> into the <code>stackOut</code>. Then do pop() from the <code>stackOut</code></li>
+<li>If the <code>stackOut</code> is not empty, do pop() directly from the <code>stackOut</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="leetcode-225-implement-stack-using-queues">LeetCode 225. Implement Stack using Queues</h1>
+<p><a href="https://leetcode.com/problems/implement-stack-using-queues/">Question Link</a></p>
+<p><strong>Solution:</strong><br>
+1、Use two queues for implementation</p>
+<pre><code class="language-java">class MyStack {
+    Queue&lt;Integer&gt; queue1;
+    Queue&lt;Integer&gt; queue2; // auxiliary queue for backup
+    public MyStack() {
+        queue1 = new LinkedList&lt;&gt;();
+        queue2 = new LinkedList&lt;&gt;();
+    }
+    
+    public void push(int x) {
+        // put x in to auxiliary queue first
+        queue2.offer(x);
+        // then dump all elements of the queue1 in to the queue2
+        while(!queue1.isEmpty())
+            queue2.offer(queue1.poll());
+        // dump all elements of the queue2 into queue1
+        Queue&lt;Integer&gt; queueTemp = new LinkedList&lt;&gt;();
+        queue1 = queue2;
+        queue2 = queueTemp;
+    }   
+    
+    public int pop() {
+       return queue1.poll();
+    }
+    
+    public int top() {
+        return queue1.peek();
+    }
+    
+    public boolean empty() {
+        return queue1.isEmpty();
+    }
+}
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack obj = new MyStack();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.top();
+ * boolean param_4 = obj.empty();
+ */
+</code></pre>
+<p><strong>Thought:</strong></p>
+<ul>
+<li>Put <code>x</code> in to auxiliary <code>queue2</code> first</li>
+<li>Dump all elements of the <code>queue1</code> in to the <code>queue2</code></li>
+<li>Dump all elements of the queue2 into queue1</li>
+</ul>
+<p>2、Use one queue for implementation</p>
+<pre><code class="language-java">class MyStack {
+    Queue&lt;Integer&gt; queue;
+    public MyStack() {
+        queue = new LinkedList&lt;&gt;();
+    }
+    
+    // When push a `x`, reorder the queue. Put the `x` at the front of the queue
+    public void push(int x) {
+        queue.offer(x);
+        int size = queue.size();
+        // move all of the elements except `x`
+        while(size-- &gt; 1)
+            queue.offer(queue.poll());
+    }   
+    
+    public int pop() {
+       return queue.poll();
+    }
+    
+    public int top() {
+        return queue.peek();
+    }
+    
+    public boolean empty() {
+        return queue.isEmpty();
+    }
+}
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack obj = new MyStack();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.top();
+ * boolean param_4 = obj.empty();
+ */
+</code></pre>
+<p><strong>Thought:</strong></p>
+<ul>
+<li>When push a <code>x</code>, reorder the queue. Put the <code>x</code> at the front of the queue</li>
+<li>In the <code>while loop</code>, move all of the elements except <code>x</code></li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#basic-concept-of-the-stack-and-the-queue">Basic Concept of the Stack and the Queue</a></li>
+<li><a href="#leetcode-232-implement-queue-using-stacks">LeetCode 232. Implement Queue using Stacks</a></li>
+<li><a href="#leetcode-225-implement-stack-using-queues">LeetCode 225. Implement Stack using Queues</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/day-9-or-28-find-the-index-of-the-first-occurrence-in-a-string-or-459-repeated-substring-pattern/">
+              <h3 class="post-title">
+                Day 9 | 28. Find the Index of the First Occurrence in a String | 459. Repeated Substring Pattern
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

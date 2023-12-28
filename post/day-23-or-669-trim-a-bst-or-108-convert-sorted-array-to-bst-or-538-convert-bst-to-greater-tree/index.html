@@ -1,0 +1,264 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 23 | 669. Trim a BST | 108. Convert Sorted Array to BST | 538. Convert BST to Greater Tree | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 23 | 669. Trim a BST | 108. Convert Sorted Array to BST | 538. Convert BST to Greater Tree | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 23 | 669. Trim a BST | 108. Convert Sorted Array to BST | 538. Convert BST to Greater Tree
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-02-27
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-23-or-669-trim-a-bst-or-108-convert-sorted-array-to-bst-or-538-convert-bst-to-greater-tree.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><a href="https://blog.csdn.net/kyle313606922/article/details/128260518">Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128272450">Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128281122">Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128295618">Day 4 | 24. Swap Nodes in Pairs| 19. Remove Nth Node From End of List| 160.Intersection of Two Lists</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128310593">Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128324032">Day 7 | 454. 4Sum II | 383. Ransom Note | 15. 3Sum | 18. 4Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128325957">Day 8 | 344. Reverse String | 541. Reverse String II | 替换空格 | 151.Reverse Words in a String | 左旋转字符串</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128337737">Day 9 | 28. Find the Index of the First Occurrence in a String | 459. Repeated Substring Pattern</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128358488">Day 10 | 232. Implement Queue using Stacks | 225. Implement Stack using Queue</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128359564">Day 11 | 20. Valid Parentheses | 1047. Remove All Adjacent Duplicates In String | 150. Evaluate RPN</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128382265">Day 13 | 239. Sliding Window Maximum | 347. Top K Frequent Elements</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128392214">Day 14 | 144.Binary Tree Preorder Traversal | 94.Binary Tree Inorder Traversal| 145.Binary Tree Postorder Traversal</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128405092">Day 15 | 102. Binary Tree Level Order Traversal | 226. Invert Binary Tree | 101. Symmetric Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128415322">Day 16 | 104.MaximumDepth of BinaryTree| 111.MinimumDepth of BinaryTree| 222.CountComplete TreeNodes</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128415322">Day 17 | 110. Balanced Binary Tree | 257. Binary Tree Paths | 404. Sum of Left Leaves</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128451752">Day 18 | 513. Find Bottom Left Tree Value | 112. Path Sum | 105&amp;106. Construct Binary Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128466708">Day 20 | 654. Maximum Binary Tree | 617. Merge Two Binary Trees | 700.Search in a Binary Search Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128477578">Day 21 | 530. Minimum Absolute Difference in BST | 501. Find Mode in Binary Search Tree | 236. Lowes</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128490148">Day 22 | 235. Lowest Common Ancestor of a BST | 701. Insert into a BST | 450. Delete Node in a BST</a></p>
+<p><ul class="markdownIt-TOC">
+<li><a href="#leetcode-669-trim-a-binary-search-tree">LeetCode 669. Trim a Binary Search Tree</a></li>
+<li><a href="#leetcode-108-convert-sorted-array-to-binary-search-tree">LeetCode 108. Convert Sorted Array to Binary Search Tree</a></li>
+<li><a href="#leetcode-538-convert-bst-to-greater-tree">LeetCode 538. Convert BST to Greater Tree</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="leetcode-669-trim-a-binary-search-tree">LeetCode 669. Trim a Binary Search Tree</h1>
+<p><a href="https://leetcode.com/problems/trim-a-binary-search-tree/">Question Link</a></p>
+<pre><code class="language-java">class Solution {
+    public TreeNode trimBST(TreeNode root, int low, int high) {
+        if(root == null) return null;
+        if(root.val &lt; low)
+            return trimBST(root.right, low, high);
+        if(root.val &gt; high)
+            return trimBST(root.left, low, high);
+        // The value of root in the range
+        root.left = trimBST(root.left, low, high);
+        root.right = trimBST(root.right, low, high);
+        return root;
+    }
+}
+</code></pre>
+<h1 id="leetcode-108-convert-sorted-array-to-binary-search-tree">LeetCode 108. Convert Sorted Array to Binary Search Tree</h1>
+<p><a href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/">Question Link</a></p>
+<pre><code class="language-java">class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return traversal(nums, 0, nums.length - 1);
+    }
+
+    TreeNode traversal(int[] nums, int low, int high){
+        if(low &gt; high)
+            return null;
+        int middle = low + (high - low)/2;
+        TreeNode node = new TreeNode(nums[middle]);
+        node.left = traversal(nums, low, middle-1);
+        node.right = traversal(nums, middle+1, high);
+        return node;
+    }
+}
+</code></pre>
+<ul>
+<li><code>low + ((high - low) &gt;&gt; 1)</code> is equals to <code>(low+high)/2</code>. The first one can avoid cross-border problem when <code>high</code> and <code>low</code> are bigest int.</li>
+</ul>
+<h1 id="leetcode-538-convert-bst-to-greater-tree">LeetCode 538. Convert BST to Greater Tree</h1>
+<p><a href="https://leetcode.com/problems/convert-bst-to-greater-tree/description/">Question Link</a></p>
+<pre><code class="language-java">class Solution {
+    int pre = 0;    // record the value of previous node
+    public TreeNode convertBST(TreeNode root) {
+        traversal(root);
+        return root;
+    }
+
+    void traversal(TreeNode root){
+        if(root == null)
+            return;
+
+        traversal(root.right);
+        pre += root.val;
+        root.val = pre;
+        traversal(root.left);
+    }
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#leetcode-669-trim-a-binary-search-tree">LeetCode 669. Trim a Binary Search Tree</a></li>
+<li><a href="#leetcode-108-convert-sorted-array-to-binary-search-tree">LeetCode 108. Convert Sorted Array to Binary Search Tree</a></li>
+<li><a href="#leetcode-538-convert-bst-to-greater-tree">LeetCode 538. Convert BST to Greater Tree</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/day-22-or-235-lowest-common-ancestor-of-a-bst-or-701-insert-into-a-bst-or-450-delete-node-in-a-bst/">
+              <h3 class="post-title">
+                Day 22 | 235. Lowest Common Ancestor of a BST | 701. Insert into a BST | 450. Delete Node in a BST
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spring CLI - Windows Scoop Installation | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Spring CLI - Windows Scoop Installation | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="💡Introduction
+Scoop is a command-line installer for Windows. For actual users, it is very similar to the package manage..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Spring CLI - Windows Scoop Installation
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-08-16
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://repository-images.githubusercontent.com/9994688/3f8974c5-c939-458e-83af-b2a41a311fce" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h3 id="introduction">💡Introduction</h3>
+<p>Scoop is a command-line installer for Windows. For actual users, it is very similar to the package management tool.</p>
+<hr>
+<h3 id="install-the-scoop">🥄Install the <strong>Scoop</strong></h3>
+<p>Allowed execution of local scripts:</p>
+<pre><code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser 
+</code></pre>
+<p>Install the Scoop</p>
+<pre><code>irm get.scoop.sh | iex
+</code></pre>
+<p>Install aria2 for multi-thread download acceleration:</p>
+<pre><code>scoop install aria2
+</code></pre>
+<p>Test whether the installation is successful:</p>
+<pre><code>scoop help
+</code></pre>
+<hr>
+<h3 id="install-the-spring-boot-cli">🌱Install  the  <strong>Spring Boot CLI</strong></h3>
+<pre><code>scoop bucket add extras
+scoop install springboot
+</code></pre>
+<hr>
+<h3 id="common-command">📝Common Command</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>search</td>
+<td>搜索软件名</td>
+</tr>
+<tr>
+<td>install</td>
+<td>安装软件</td>
+</tr>
+<tr>
+<td>update</td>
+<td>更新软件</td>
+</tr>
+<tr>
+<td>status</td>
+<td>查看软件状态</td>
+</tr>
+<tr>
+<td>uninstall</td>
+<td>卸载软件</td>
+</tr>
+<tr>
+<td>info</td>
+<td>查看软件详情</td>
+</tr>
+<tr>
+<td>home</td>
+<td>打开软件主页</td>
+</tr>
+</tbody>
+</table>
+<p>Install the specified spring verison:</p>
+<pre><code>scoop install springboot@2.5.6
+</code></pre>
+<hr>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#introduction">💡Introduction</a></li>
+<li><a href="#install-the-scoop">🥄Install the <strong>Scoop</strong></a></li>
+<li><a href="#install-the-spring-boot-cli">🌱Install  the  <strong>Spring Boot CLI</strong></a></li>
+<li><a href="#common-command">📝Common Command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/day-60-or-84-largest-rectangle-in-histogram/">
+              <h3 class="post-title">
+                Day 60 | 84. Largest Rectangle in Histogram
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

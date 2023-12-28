@@ -1,0 +1,423 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 8 | 344. Reverse String | 541. Reverse String II | 替换空格 | 151.Reverse Words in a String | 左旋转字符串 | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 8 | 344. Reverse String | 541. Reverse String II | 替换空格 | 151.Reverse Words in a String | 左旋转字符串 | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 8 | 344. Reverse String | 541. Reverse String II | 替换空格 | 151.Reverse Words in a String | 左旋转字符串
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-02-27
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-8-or-344-reverse-string-or-541-reverse-string-ii-or-ti-huan-kong-ge-or-151reverse-words-in-a-string-or-zuo-xuan-zhuan-zi-fu-chuan.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><a href="https://blog.csdn.net/kyle313606922/article/details/128260518">Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128272450">Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128281122">Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128295618">Day 4 | 24. Swap Nodes in Pairs| 19. Remove Nth Node From End of List| 160.Intersection of Two Lists</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128310593">Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128324032">Day 7 | 454. 4Sum II | 383. Ransom Note | 15. 3Sum | 18. 4Sum</a></p>
+<p><ul class="markdownIt-TOC">
+<li><a href="#leetcode-344-reverse-string">LeetCode 344. Reverse String</a></li>
+<li><a href="#leetcode-541-reverse-string-ii">LeetCode 541. Reverse String II</a></li>
+<li><a href="#leetcode-%E5%89%91%E6%8C%87-offer-05-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC">LeetCode 剑指 Offer 05. 替换空格</a></li>
+<li><a href="#leetcode-151-reverse-words-in-a-string">LeetCode 151. Reverse Words in a String</a></li>
+<li><a href="#leetcode-%E5%89%91%E6%8C%87-offer-58-ii-%E5%B7%A6%E6%97%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2">LeetCode 剑指 Offer 58 - II. 左旋转字符串</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="leetcode-344-reverse-string">LeetCode 344. Reverse String</h1>
+<p><a href="https://leetcode.com/problems/reverse-string/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public void reverseString(char[] s) {
+        int left = 0;
+        int right = s.length - 1;
+        while(left &lt; right){
+            s[left] ^= s[right];
+            s[right] ^= s[left];
+            s[left] ^= s[right];
+            left++;
+            right--;
+        }
+    }
+}
+
+class Solution {
+    public void reverseString(char[] s) {
+        int left = 0;
+        int right = s.length-1;
+        while(left &lt; right){
+            char temp = s[right];
+            s[right] = s[left];
+            s[left] = temp;
+            right--;
+            left++;
+        }
+    }
+}
+</code></pre>
+<p><strong>Thought:</strong></p>
+<ul>
+<li>We can adopt <code>Double Pointer Method</code></li>
+<li>Use <code>^=</code> to exchange the position of left and right</li>
+</ul>
+<hr>
+<h1 id="leetcode-541-reverse-string-ii">LeetCode 541. Reverse String II</h1>
+<p><a href="https://leetcode.com/problems/reverse-string-ii/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public String reverseStr(String s, int k) {
+        char[] ch = s.toCharArray();
+        for(int i = 0; i &lt; ch.length; i+=2*k){
+            int left = i;
+            // determine the position of right
+            int right = Math.min(i+k-1, ch.length-1);
+            while(left &lt; right){
+                ch[left] ^= ch[right];
+                ch[right] ^= ch[left];
+                ch[left] ^= ch[right];
+                left++;
+                right--;
+            }
+        }
+        return new String(ch);
+    }
+}
+</code></pre>
+<p><strong>Thought:</strong></p>
+<ul>
+<li>Let <code>i</code> move forward <code>2*k</code> each time</li>
+<li>Notice that use <code>Math.min()</code> to determine the position of right</li>
+<li>Use <code>new String(ch)</code> to convert char to String</li>
+</ul>
+<hr>
+<h1 id="leetcode-剑指-offer-05-替换空格">LeetCode 剑指 Offer 05. 替换空格</h1>
+<p><a href="https://leetcode.cn/problems/ti-huan-kong-ge-lcof/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public String replaceSpace(String s) {
+        if(s.length() == 0 || s == null)
+            return s;
+        StringBuilder str = new StringBuilder();
+        // 扩充2倍空格的空间数量
+        for(int i = 0; i &lt; s.length(); i++){
+            if(s.charAt(i) == ' ')
+                str.append(&quot;  &quot;);
+        }
+        // 没有空格则直接返回
+        if(str.length() == 0)
+            return s;
+
+        // 有空格则定义两个指针
+        int left = s.length() - 1;
+        s += str.toString();
+        int right = s.length() - 1;
+        char[] ch = s.toCharArray();
+        while(left &gt;= 0){
+            if(ch[left] == ' '){
+                ch[right--] = '0';
+                ch[right--] = '2';
+                ch[right] = '%';
+            }else{
+                ch[right] = ch[left];
+            }
+            left--;
+            right--;
+       }    
+       return new String(ch);
+    }
+}
+</code></pre>
+<p><strong>Thought:</strong></p>
+<ul>
+<li>Expand the array space by 2 times the number of spaces</li>
+<li>Define two pointers, fill the new array  from right to left</li>
+</ul>
+<hr>
+<h1 id="leetcode-151-reverse-words-in-a-string">LeetCode 151. Reverse Words in a String</h1>
+<p><a href="https://leetcode.com/problems/reverse-words-in-a-string/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public String reverseWords(String s) {
+        char[] ch = s.toCharArray();
+        // 1、remove the extra space at the beginning, end and middle
+        ch = removeSpace(ch);
+        // 2、reverse the whole String
+        reverseString(ch, 0, ch.length-1);
+        // 3、reverse each word
+        reverseEachWord(ch);
+        return new String(ch);
+    }
+
+    char[] removeSpace(char[] ch){
+        int slow = 0;
+        for(int fast= 0; fast &lt; ch.length; fast++){
+            // use a fast pointer to remove all space
+            if(ch[fast] != ' '){
+                // add space behind each word
+                if(slow != 0)
+                    ch[slow++] = ' ';
+                // When the `fast` pointer encounters a space or traverses to the end of the string, it proves that a word has been traversed.
+                while(fast &lt; ch.length &amp;&amp; ch[fast] != ' '){
+                    ch[slow++] = ch[fast++];
+                }
+            }            
+        }
+	    // Create a new char array for resizing.
+        char[] newChar = new char[slow];
+        System.arraycopy(ch, 0, newChar, 0, slow);
+        return newChar;
+    }
+
+    void reverseString(char[] ch, int left, int right){
+        if (right &gt;= ch.length) {
+            System.out.println(&quot;set a wrong right&quot;);
+            return;
+        }
+        while(left &lt; right){
+            ch[left] ^= ch[right];
+            ch[right] ^= ch[left];
+            ch[left] ^= ch[right];
+            left++;
+            right--;
+        }
+    }
+
+    void reverseEachWord(char[] ch){
+        int left = 0;
+        // &lt;= is to make the `right` always points to the position after the end of the word.
+        for(int right = 0; right &lt;= ch.length; right++){
+            // When the `right` pointer reaches the end of the string or the space behind a word.
+            if(right == ch.length || ch[right]==' '){
+                reverseString(ch, left, right-1);
+                left = right + 1;         
+            }
+        }
+    }
+}
+</code></pre>
+<p><strong>Thought:</strong></p>
+<ul>
+<li>We need three steps to solving this question:</li>
+<li>Remove the extra space at the beginning, end and middle
+<ul>
+<li><code>Double Pointer Method</code></li>
+<li>Use the <code>fast</code> pointer to remove all space</li>
+<li>Use the <code>slow</code> pointer to add a space before every word, excluding the first word.</li>
+<li>When the <code>fast</code> pointer encounters a space or traverses to the end of the string, it proves that a word has been traversed.</li>
+<li>Create a new char array for resizing.</li>
+</ul>
+</li>
+<li>Reverse the whole string</li>
+<li>Reverse each word
+<ul>
+<li><code>&lt;=</code> is to make the <code>right</code> always points to the position after the end of the word.</li>
+<li>When the <code>right</code> pointer rechees the end of the string or the space behind a word.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="leetcode-剑指-offer-58-ii-左旋转字符串">LeetCode 剑指 Offer 58 - II. 左旋转字符串</h1>
+<p><a href="https://leetcode.com/problems/reverse-words-in-a-string/">Question Link</a></p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-java">class Solution {
+    public String reverseLeftWords(String s, int n) {
+        char[] ch = s.toCharArray();
+        // reverse the first n characters
+        reverseString(ch, 0, n-1);
+        // revere the characters after n
+        reverseString(ch, n, ch.length-1);
+        // reverse all characters
+        reverseString(ch, 0, ch.length-1);
+        return new String(ch);
+    }
+
+    void reverseString(char[] ch, int left, int right){
+        int slow = 0;
+        while(left &lt; right){
+            ch[left] ^= ch[right];
+            ch[right] ^= ch[left];
+            ch[left] ^= ch[right];
+            left++;
+            right--;
+        }
+    }
+}
+</code></pre>
+<p><strong>Thought：</strong></p>
+<ul>
+<li>reverse the first n characters</li>
+<li>revere the characters after n</li>
+<li>reverse all characters</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#leetcode-344-reverse-string">LeetCode 344. Reverse String</a></li>
+<li><a href="#leetcode-541-reverse-string-ii">LeetCode 541. Reverse String II</a></li>
+<li><a href="#leetcode-%E5%89%91%E6%8C%87-offer-05-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC">LeetCode 剑指 Offer 05. 替换空格</a></li>
+<li><a href="#leetcode-151-reverse-words-in-a-string">LeetCode 151. Reverse Words in a String</a></li>
+<li><a href="#leetcode-%E5%89%91%E6%8C%87-offer-58-ii-%E5%B7%A6%E6%97%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2">LeetCode 剑指 Offer 58 - II. 左旋转字符串</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/day-7-or-454-4sum-ii-or-383-ransom-note-or-15-3sum-or-18-4sum/">
+              <h3 class="post-title">
+                Day 7 | 454. 4Sum II | 383. Ransom Note | 15. 3Sum | 18. 4Sum
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

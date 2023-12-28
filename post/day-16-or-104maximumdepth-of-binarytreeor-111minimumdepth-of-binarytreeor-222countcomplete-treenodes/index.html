@@ -1,0 +1,376 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 16 | 104.MaximumDepth of BinaryTree| 111.MinimumDepth of BinaryTree| 222.CountComplete TreeNodes | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 16 | 104.MaximumDepth of BinaryTree| 111.MinimumDepth of BinaryTree| 222.CountComplete TreeNodes | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 16 | 104.MaximumDepth of BinaryTree| 111.MinimumDepth of BinaryTree| 222.CountComplete TreeNodes
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-02-27
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-16-or-104maximumdepth-of-binarytreeor-111minimumdepth-of-binarytreeor-222countcomplete-treenodes.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><a href="https://blog.csdn.net/kyle313606922/article/details/128260518">Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128272450">Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128281122">Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128295618">Day 4 | 24. Swap Nodes in Pairs| 19. Remove Nth Node From End of List| 160.Intersection of Two Lists</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128310593">Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128324032">Day 7 | 454. 4Sum II | 383. Ransom Note | 15. 3Sum | 18. 4Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128325957">Day 8 | 344. Reverse String | 541. Reverse String II | 替换空格 | 151.Reverse Words in a String | 左旋转字符串</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128337737">Day 9 | 28. Find the Index of the First Occurrence in a String | 459. Repeated Substring Pattern</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128358488">Day 10 | 232. Implement Queue using Stacks | 225. Implement Stack using Queue</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128359564">Day 11 | 20. Valid Parentheses | 1047. Remove All Adjacent Duplicates In String | 150. Evaluate RPN</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128382265">Day 13 | 239. Sliding Window Maximum | 347. Top K Frequent Elements</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128392214">Day 14 | 144.Binary Tree Preorder Traversal | 94.Binary Tree Inorder Traversal| 145.Binary Tree Postorder Traversal</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128405092">Day 15 | 102. Binary Tree Level Order Traversal | 226. Invert Binary Tree | 101. Symmetric Tree</a></p>
+<p><ul class="markdownIt-TOC">
+<li><a href="#leetcode-104-maximum-depth-of-binary-tree">LeetCode 104. Maximum Depth of Binary Tree</a></li>
+<li><a href="#leetcode-111-minimum-depth-of-binary-tree">LeetCode 111. Minimum Depth of Binary Tree</a></li>
+<li><a href="#leetcode-222-count-complete-tree-nodes">LeetCode 222. Count Complete Tree Nodes</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="leetcode-104-maximum-depth-of-binary-tree">LeetCode 104. Maximum Depth of Binary Tree</h1>
+<p><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/">Question Link</a></p>
+<p><strong>Solution:</strong><br>
+1、Recursion（get depth）</p>
+<pre><code class="language-java">class Solution {
+    int max = 0;
+    public int maxDepth(TreeNode root) {
+        getDepth(root, 0);
+        return max;
+    }
+
+    void getDepth(TreeNode node, int depth){
+        if(node == null) return;
+        depth++;
+        max = max &lt; depth ? depth : max;
+        getDepth(node.left, depth);
+        getDepth(node.right, depth);
+    }
+}
+</code></pre>
+<p>2、Recursion（get height）</p>
+<pre><code class="language-java">class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root == null) return 0;
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+        return 1 + Math.max(leftDepth, rightDepth);
+    }
+
+}
+</code></pre>
+<ul>
+<li>The height of the root node is the max depth of a binary tree. So in this question, we get the max depth by using postorder traversal to calculate the height of the root node</li>
+</ul>
+<p>3、Iterative Method（lever order）</p>
+<pre><code class="language-java">class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root == null)
+            return 0;
+        Deque&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
+        queue.offer(root);
+        int depth = 0;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            depth++;
+            while(size &gt; 0){
+                TreeNode node = queue.poll();
+                if(node.left != null) queue.offer(node.left);
+                if(node.right != null) queue.offer(node.right);
+                size--;
+            }
+        }
+        return depth;
+    }
+}
+</code></pre>
+<hr>
+<h1 id="leetcode-111-minimum-depth-of-binary-tree">LeetCode 111. Minimum Depth of Binary Tree</h1>
+<p><a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/">Question Link</a><br>
+<strong>Solution:</strong><br>
+1、Recursion（get height）</p>
+<pre><code class="language-java">class Solution {
+    public int minDepth(TreeNode root) {
+        return getDepth(root);
+    }
+
+    int getDepth(TreeNode node){
+        if(node == null) return 0;
+        if(node.left == null &amp;&amp; node.right != null)
+            return getDepth(node.right) + 1;
+        if(node.left != null &amp;&amp; node.right == null)
+            return getDepth(node.left) + 1;
+        if(node.left == null &amp;&amp; node.right == null)
+            return 1;
+
+        return Math.min(getDepth(node.left), getDepth(node.right)) + 1;
+    }
+}
+</code></pre>
+<ul>
+<li>If the left subtree is null and the right subtree is not null. The minimum depth is the depth of the right subtree + 1.</li>
+<li>If the right subtree is null and the left subtree is not null. The minimum depth is the depth of the left subtree + 1.</li>
+<li>If both left and right subtrees are not null, return the minimum depth of the left and right subtrees + 1.</li>
+</ul>
+<p>2、Iterative（lever order）</p>
+<pre><code class="language-java">class Solution {
+    public int minDepth(TreeNode root) {
+        if(root == null)
+            return 0;
+        Deque&lt;TreeNode&gt; deque = new LinkedList&lt;&gt;();
+        deque.offer(root);
+        int depth = 0;
+        while(!deque.isEmpty()){
+            int size = deque.size();
+            depth++;
+            while(size &gt; 0){
+                TreeNode node = deque.poll();
+                if(node.left == null &amp;&amp; node.right == null)
+                    return depth;
+                if(node.left != null) deque.offer(node.left);
+                if(node.right != null) deque.offer(node.right);
+                size--;
+            }
+        }
+        return depth;
+    }
+}
+</code></pre>
+<ul>
+<li>When traversal, if both the left and right child nodes are null, return <code>depth</code> directly. Because the traversal order is from top to bottom, this is the minimum depth.</li>
+</ul>
+<hr>
+<h1 id="leetcode-222-count-complete-tree-nodes">LeetCode 222. Count Complete Tree Nodes</h1>
+<p><a href="https://leetcode.com/problems/count-complete-tree-nodes/">Question Link</a><br>
+<strong>Solution:</strong><br>
+1、Recursion</p>
+<pre><code class="language-java">class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null)
+            return 0;
+        return countNodes(root.left) + countNodes(root.right) + 1;
+    }
+}
+</code></pre>
+<p>2、Iterative（lever order）</p>
+<pre><code class="language-java">class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null)
+            return 0;
+        Deque&lt;TreeNode&gt; deque = new LinkedList&lt;&gt;();
+        deque.add(root);
+        int count = 0;
+        while(!deque.isEmpty()){
+            int size = deque.size();           
+            while(size &gt; 0){
+                TreeNode node = deque.poll();
+                count++;
+                if(node.left != null) deque.offer(node.left);
+                if(node.right != null) deque.offer(node.right);
+                size--;
+            }
+        }
+        return count;
+    }
+}
+</code></pre>
+<p>3、Complete Tree Solution</p>
+<pre><code class="language-java">class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null)
+            return 0;
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        int leftDepth = 0, rightDepth = 0;
+        // Calculate the depth of left subtree
+        while(left != null) {
+            left = left.left;
+            leftDepth++;
+        }
+        // Calculate the depth of right subtree
+        while(right != null){
+            right = right.right;
+            rightDepth++;
+        }
+        if(leftDepth == rightDepth)
+            return (2 &lt;&lt; leftDepth)-1;
+
+        return countNodes(root.left) + countNodes(root.right) + 1;
+    }
+}
+</code></pre>
+<ul>
+<li>The node number of the complete tree is <code>2^depth -1</code>.</li>
+<li><code>2&lt;&lt;1</code> is equivalent to <code>2^2</code></li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#leetcode-104-maximum-depth-of-binary-tree">LeetCode 104. Maximum Depth of Binary Tree</a></li>
+<li><a href="#leetcode-111-minimum-depth-of-binary-tree">LeetCode 111. Minimum Depth of Binary Tree</a></li>
+<li><a href="#leetcode-222-count-complete-tree-nodes">LeetCode 222. Count Complete Tree Nodes</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/day-15-or-102-binary-tree-level-order-traversal-or-226-invert-binary-tree-or-101-symmetric-tree/">
+              <h3 class="post-title">
+                Day 15 | 102. Binary Tree Level Order Traversal | 226. Invert Binary Tree | 101. Symmetric Tree
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

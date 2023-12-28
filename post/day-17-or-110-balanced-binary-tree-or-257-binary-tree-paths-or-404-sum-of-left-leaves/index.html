@@ -1,0 +1,279 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 17 | 110. Balanced Binary Tree | 257. Binary Tree Paths | 404. Sum of Left Leaves | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day 17 | 110. Balanced Binary Tree | 257. Binary Tree Paths | 404. Sum of Left Leaves | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day 17 | 110. Balanced Binary Tree | 257. Binary Tree Paths | 404. Sum of Left Leaves
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-02-27
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://wuhumontana.github.io/post-images/day-17-or-110-balanced-binary-tree-or-257-binary-tree-paths-or-404-sum-of-left-leaves.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><a href="https://blog.csdn.net/kyle313606922/article/details/128260518">Day 1 | 704. Binary Search | 27. Remove Element | 35. Search Insert Position | 34. First and Last Position of Element in Sorted Array</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128272450">Day 2 | 977. Squares of a Sorted Array | 209. Minimum Size Subarray Sum | 59. Spiral Matrix II</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128281122">Day 3 | 203. Remove Linked List Elements | 707. Design Linked List | 206. Reverse Linked List</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128295618">Day 4 | 24. Swap Nodes in Pairs| 19. Remove Nth Node From End of List| 160.Intersection of Two Lists</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128310593">Day 6 | 242. Valid Anagram | 349. Intersection of Two Arrays | 202. Happy Numbe | 1. Two Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128324032">Day 7 | 454. 4Sum II | 383. Ransom Note | 15. 3Sum | 18. 4Sum</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128325957">Day 8 | 344. Reverse String | 541. Reverse String II | 替换空格 | 151.Reverse Words in a String | 左旋转字符串</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128337737">Day 9 | 28. Find the Index of the First Occurrence in a String | 459. Repeated Substring Pattern</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128358488">Day 10 | 232. Implement Queue using Stacks | 225. Implement Stack using Queue</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128359564">Day 11 | 20. Valid Parentheses | 1047. Remove All Adjacent Duplicates In String | 150. Evaluate RPN</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128382265">Day 13 | 239. Sliding Window Maximum | 347. Top K Frequent Elements</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128392214">Day 14 | 144.Binary Tree Preorder Traversal | 94.Binary Tree Inorder Traversal| 145.Binary Tree Postorder Traversal</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128405092">Day 15 | 102. Binary Tree Level Order Traversal | 226. Invert Binary Tree | 101. Symmetric Tree</a><br>
+<a href="https://blog.csdn.net/kyle313606922/article/details/128415322">Day 16 | 104.MaximumDepth of BinaryTree| 111.MinimumDepth of BinaryTree| 222.CountComplete TreeNodes</a></p>
+<p><ul class="markdownIt-TOC">
+<li><a href="#leetcode-110-balanced-binary-tree">LeetCode 110. Balanced Binary Tree</a></li>
+<li><a href="#leetcode-257-binary-tree-paths">LeetCode 257. Binary Tree Paths</a></li>
+<li><a href="#leetcode-404-sum-of-left-leaves">LeetCode 404. Sum of Left Leaves</a></li>
+</ul>
+(Directory)</p>
+<hr>
+<h1 id="leetcode-110-balanced-binary-tree">LeetCode 110. Balanced Binary Tree</h1>
+<p><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/">Question Link</a></p>
+<pre><code class="language-java">class Solution {
+    public boolean isBalanced(TreeNode root) {
+        return getHeight(root) != -1;
+    }
+
+    int getHeight(TreeNode node){
+        if(node == null) 
+            return 0;
+        int leftHeight = getHeight(node.left);
+        if(leftHeight == -1)
+            return -1;
+        int rightHeight = getHeight(node.right);
+        if(rightHeight == -1)
+            return -1;
+        if(Math.abs(leftHeight-rightHeight) &gt; 1)
+            return -1;
+
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+}
+</code></pre>
+<h1 id="leetcode-257-binary-tree-paths">LeetCode 257. Binary Tree Paths</h1>
+<p><a href="https://leetcode.com/problems/binary-tree-paths/">Question Link</a></p>
+<pre><code class="language-java">class Solution {
+    public List&lt;String&gt; binaryTreePaths(TreeNode root) {
+        List&lt;String&gt; res = new ArrayList&lt;&gt;();
+        if(root == null)
+            return res;
+        List&lt;Integer&gt; paths = new ArrayList&lt;&gt;();
+        traversal(root, paths, res);  
+        return res;  
+    }
+
+    void traversal(TreeNode node, List&lt;Integer&gt; paths, List&lt;String&gt; res){
+        paths.add(node.val);
+        if(node.left == null &amp;&amp; node.right == null){
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i &lt; paths.size()-1; i++)
+                sb.append(paths.get(i)).append(&quot;-&gt;&quot;);
+            sb.append(paths.get(paths.size()-1));
+            res.add(sb.toString());
+            return;
+        }           
+        if(node.left != null){
+            traversal(node.left, paths, res);
+            paths.remove(paths.size() - 1);
+        }
+        if(node.right != null){
+            traversal(node.right, paths, res);
+            paths.remove(paths.size() - 1);
+        }
+    }
+}
+</code></pre>
+<h1 id="leetcode-404-sum-of-left-leaves">LeetCode 404. Sum of Left Leaves</h1>
+<p><a href="https://leetcode.com/problems/sum-of-left-leaves/description/">Question Link</a></p>
+<pre><code class="language-java">class Solution {
+    public int sumOfLeftLeaves(TreeNode root) {
+        if(root == null)
+            return 0;    
+        return getSum(root);       
+    }
+
+    int getSum(TreeNode node){
+        if(node == null) return 0;
+        if(node.left == null &amp;&amp; node.right == null) return 0;
+
+        int leftValue = getSum(node.left);
+        int rightValue = getSum(node.right);
+        if(node.left!=null &amp;&amp; node.left.left == null &amp;&amp; node.left.right == null)
+            leftValue = node.left.val;
+        return leftValue + rightValue;         
+    }
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#leetcode-110-balanced-binary-tree">LeetCode 110. Balanced Binary Tree</a></li>
+<li><a href="#leetcode-257-binary-tree-paths">LeetCode 257. Binary Tree Paths</a></li>
+<li><a href="#leetcode-404-sum-of-left-leaves">LeetCode 404. Sum of Left Leaves</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/day-16-or-104maximumdepth-of-binarytreeor-111minimumdepth-of-binarytreeor-222countcomplete-treenodes/">
+              <h3 class="post-title">
+                Day 16 | 104.MaximumDepth of BinaryTree| 111.MinimumDepth of BinaryTree| 222.CountComplete TreeNodes
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

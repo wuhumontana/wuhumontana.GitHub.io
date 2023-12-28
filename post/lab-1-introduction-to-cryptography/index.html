@@ -1,0 +1,255 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lab 1 - Introduction to Cryptography | Kyle Wang</title>
+<link rel="shortcut icon" href="https://wuhumontana.github.io/favicon.ico?v=1703739981162">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://wuhumontana.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Lab 1 - Introduction to Cryptography | Kyle Wang - Atom Feed" href="https://wuhumontana.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Lab Group Memember: Kyle Wang、Yao Xiao、Shruthi Duraisamy
+Lab Task 1: Generate Encryption Key in a Wrong Way
+Run the code..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://wuhumontana.github.io">
+  <img class="avatar" src="https://wuhumontana.github.io/images/avatar.png?v=1703739981162" alt="">
+  </a>
+  <h1 class="site-title">
+    Kyle Wang
+  </h1>
+  <p class="site-description">
+    信于心，简于行
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          BLOG
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          ARCHIVES
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          TAGS
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          ABOUT
+        </a>
+      
+    
+      
+        <a href="https://drive.google.com/file/d/1f1832sd3IH4upYbMtzynXYrUbx0MiqDx/view?usp=drive_link" class="menu">
+          CV
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/wuhumontana" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Lab 1 - Introduction to Cryptography
+            </h2>
+            <div class="post-info">
+              <span>
+                2023-03-01
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://img.electronicdesign.com/files/base/ebm/electronicdesign/image/2020/05/PROMOCryptographyHandbook_Ch5.5eceabbf11917.png?auto=format,compress&amp;fit=crop&amp;h=556&amp;w=1000&amp;q=45" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p><strong>Lab Group Memember: Kyle Wang、Yao Xiao、Shruthi Duraisamy</strong></p>
+<p><strong>Lab Task 1: Generate Encryption Key in a Wrong Way</strong><br>
+Run the code, and describe your observations. Then, comment out Line ①, run the program again, and describe your observations. Use the observations in both cases to explain the purpose of the srand() and time() functions in the code.</p>
+<p><strong>Results &amp; Comments:</strong></p>
+<ul>
+<li>
+<p>First running：<br>
+Printed the current timestamp and different string.<br>
+<img src="https://wuhumontana.github.io/post-images/1677897184584.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Second running：<br>
+Printed the current timestamp and a fixed string: <strong>67c6697351ff4aec29cdbaabf2fbe346</strong><br>
+<img src="https://wuhumontana.github.io/post-images/1677897451089.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>Purpose of the srand() and time():</p>
+<ul>
+<li>srand() can sow random seed. With different seeds, different random numbers can be generated.</li>
+<li>time() gets the timestamp since January 1, 1970 00:00:00. Therefore, this value will change during each execution of the program. So use the timestamp as seed, the random numbers will be different.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Lab Task 2: Guessing the Key</strong><br>
+Your job is to help Bob ﬁnd out Alice’s encryption key, so you can decrypt the entire document. You should write a program to try all the possible keys.</p>
+<p><strong>Results &amp; Comments:</strong></p>
+<ul>
+<li>According to the content of task 2，we know that the key may be generated between <strong>2018-04-17 21:08:49</strong> and <strong>2018-04-17 23:08:49</strong>.</li>
+<li>Convert to timestamp, the key may be generated between <strong>1524013729</strong> and <strong>1524020929</strong>.<br>
+<img src="https://wuhumontana.github.io/post-images/1677897916540.png" alt="" loading="lazy"></li>
+<li>Execute the C codes blow, I generated 7200 different Keys by using the timestamp between <strong>1524013729</strong> and <strong>1524020929</strong>. These keys were outputed to <strong>log.txt</strong><br>
+<img src="https://wuhumontana.github.io/post-images/1677897963725.png" alt="" loading="lazy"></li>
+<li>Execute the python codes below, it can read the <strong>log.txt</strong> and use these 7200 keys one by one to encrypt the plaintext.<br>
+<img src="https://wuhumontana.github.io/post-images/1677898010231.png" alt="" loading="lazy"></li>
+<li>Finally, we found that when using “95fa2030e73ed3f8da761b4eb805dfd7” as a key to encrypt the plaintext, can get target ciphertext.<br>
+<img src="https://wuhumontana.github.io/post-images/1677898033747.png" alt="" loading="lazy"></li>
+</ul>
+<hr>
+<p><strong>Lab Task 3: Guessing the Key</strong><br>
+Please run the above command. While it is running, move your mouse, click your mouse, type some-things, read a large ﬁle, visit a website. What activities increases the entropy signiﬁcantly. Please describe your observation in your report.</p>
+<p><strong>Results &amp; Comments:</strong><br>
+According to my observation, all of these activities could increases the entropy. The faster you do these activities, the faster the entropy increases.</p>
+<hr>
+<p><strong>Lab Task 4: Get Pseudo Random Numbers from /dev/random</strong></p>
+<pre><code>$ cat /dev/random | hexdump
+</code></pre>
+<p>Please run the above command and at the same time use the watch command to monitor the entropy.What happens if you do not move your mouse or type anything. Then, randomly move your mouse and see whether you can observe any difference. Please describe and explain your observations.</p>
+<p><strong>Results &amp; Comments:</strong><br>
+When running the above command, the entropy return to zero.<br>
+If I don’t move my mouse of type anything, the entropy increases slowly.<br>
+If I randomly move my mouse, the entropy increases fast. Then entropy return to zero and output in hex mode when it increases to a certain number(about 62).</p>
+<p><strong>Question</strong>: If a server uses /dev/random to generate the random session key with a client. Please describe how you can launch a Denial-Of-Service (DOS) attack on such a server.</p>
+<p><strong>Answer</strong>: Using instruction or high-frequency access to the server(if use /dev/random) to keep the entropy of the random pool at a very low level. So that the generation of random numbers will basically stop, and it will not be able to continue to serve the Client.</p>
+<hr>
+<p><strong>Lab Task 5: Get Random Numbers from /dev/urandom</strong><br>
+<code>5.1</code> Please run the following command, and the describe whether moving the mouse has any effect on the outcome.</p>
+<pre><code>$ cat /dev/urandom | hexdump
+</code></pre>
+<p><strong>Results &amp; Comments:</strong><br>
+When running this command, random numbers are continuously printed. Regardless of whether the mouse is moved,  the generation of random numbers will not stop.</p>
+<p><strong>5.2</strong> Let us ﬁrst generate 1 MB of pseudo random number from /dev/urandom and save them in a ﬁle. Then we run ent on the ﬁle. Please describe your outcome, and analyze whether the quality of the random numbers is good or not.</p>
+<p><strong>Results &amp; Comments:</strong><br>
+<img src="https://wuhumontana.github.io/post-images/1677898469559.png" alt="" loading="lazy"><br>
+The entropy of the random number reaches 7.999835 bits/bytes, which is already very high when a byte is 8 bits.<br>
+The chi-square distribution is 240.94, and the probability that the random number exceeds this value is 72.74%, which is also high.<br>
+The Arithmetic mean value of data bytes is really close to random).<br>
+The PI calculated by the Monte Carlo value has an error of only 0.15%, which is also very small.<br>
+The correlation of the series reaches 0.000069. This shows that the sequence is fairly random.<br>
+<strong>To sum up: the quality of the generated random numbers is very high.</strong></p>
+<p><strong>5.3</strong> Please modify the above code snippet to generate a 256-bit encryption key. Please compile and run your code; print out the numbers and include the screenshot in the report.<br>
+<strong>Results &amp; Comments</strong>:<br>
+<img src="https://wuhumontana.github.io/post-images/1677898588733.png" alt="" loading="lazy"><br>
+<img src="https://wuhumontana.github.io/post-images/1677898600587.png" alt="" loading="lazy"><br>
+Running this code multiple times, we got different results.<br>
+Through /dev/urandom, 32bytes of random numbers can be obtained. There is no denial of service in this process. The difference between random numbers generated each time is also very large, and the quality of random numbers is also very high.</p>
+<hr>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://wuhumontana.github.io/post/midterm-cybersecurity-risk-management/">
+              <h3 class="post-title">
+                Midterm - CyberSecurity Risk Management
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://wuhumontana.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
